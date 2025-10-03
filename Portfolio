@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jules Wax - Creative Portfolio</title>
+    <link rel="stylesheet" href="https://use.typekit.net/gre6xxj.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+              font-family: "baga", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            background-color: #fff;
+            padding: 60px 40px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #666;
+        }
+
+        .nav-section {
+            margin-bottom: 50px;
+        }
+
+        .nav-title {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-title:hover {
+            color: #666;
+        }
+
+        .nav-title.active {
+            color: #000;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 8px 0;
+            color: #999;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #333;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 300px;
+            flex: 1;
+            padding: 40px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            min-height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Detail Page */
+        .detail-page {
+            max-width: 1200px;
+        }
+
+        .detail-header {
+            margin-bottom: 40px;
+        }
+
+        .detail-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .detail-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+            margin-bottom: 40px;
+        }
+
+        .back-button:hover {
+            background-color: #333;
+        }
+
+        .detail-content {
+            display: grid;
+            gap: 30px;
+        }
+
+        .detail-image {
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                padding: 30px 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.large,
+            .gallery-item.wide,
+            .gallery-item.tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .detail-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h1 class="logo" onclick="showHome()">JULES WAX</h1>
+
+            <nav class="nav-section">
+                <h2 class="nav-title" onclick="showCategory('short-films')">Short Films</h2>
+                <a class="nav-link" onclick="showDetail('cruise')">Cruise Me, Cruise Me Babe</a>
+<a class="nav-link" onclick="showDetail('acheron')">Acheron</a>
+<a class="nav-link" onclick="showDetail('burns')">When It Burns</a>
+            </nav>
+
+            <nav class="nav-section">
+                <h2 class="nav-title" onclick="showCategory('corporate')">Corporate</h2>
+                <a class="nav-link" onclick="showDetail('tedx')">TedX</a>
+                <a class="nav-link" onclick="showDetail('motion')">Motion Design</a>
+                <a class="nav-link" onclick="showDetail('firstfloor')">FirstFloor - Interior Design</a>
+                <a class="nav-link" onclick="showDetail('smillin')">Smillin' Glass</a>
+                <a class="nav-link" onclick="showDetail('interviews')">Interviews</a>
+            </nav>
+
+             <nav class="nav-section">
+    <h2 class="nav-title" onclick="showCategory('ux-research')">UX Research & Design</h2>
+    <a class="nav-link" onclick="showDetail('user-testing')">User Testing</a>
+    <a class="nav-link" onclick="showDetail('wireframes')">Wireframes & Prototypes</a>
+    <a class="nav-link" onclick="showDetail('case-study')">Case Study</a>
+</nav>
+
+            <nav class="nav-section">
+                <h2 class="nav-title" onclick="showCategory('graphic')">Graphic Design</h2>
+                <a class="nav-link" onclick="showDetail('bottle')">Bottle Branding</a>
+                <a class="nav-link" onclick="showDetail('security')">Security Process Illustration</a>
+                <a class="nav-link" onclick="showDetail('product')">Product How It Works</a>
+            </nav>
+
+            <nav class="nav-section">
+                <h2 class="nav-title" onclick="showCategory('installation')">Installation Art</h2>
+                <a class="nav-link" onclick="showDetail('european')">European Capital of Culture Elevsis</a>
+                <a class="nav-link" onclick="showDetail('sue')">Sue By The Sea</a>
+                <a class="nav-link" onclick="showDetail('vr')">Virtual Reality</a>
+            </nav>
+
+            <nav class="nav-section">
+                <h2 class="nav-title" onclick="showCategory('photography')">Photography</h2>
+                <a class="nav-link" onclick="showDetail('fanzine')">Fanzine Design</a>
+                <a class="nav-link" onclick="showDetail('analogue')">Analogue</a>
+                <a class="nav-link" onclick="showDetail('digital')">Digital</a>
+            </nav>
+
+            <nav class="nav-section">
+                <h2 class="nav-title">Contact</h2>
+                <a href="mailto:contact@juleswax.com" class="nav-link">Get in Touch</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+          <div id="home" class="page active">
+    <div class="gallery">
+        <div class="gallery-item" onclick="showDetail('cruise')">
+            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=600&fit=crop" alt="Cruise Me">
+            <div class="overlay">
+                <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('acheron')">
+            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=600&h=600&fit=crop" alt="Acheron">
+            <div class="overlay">
+                <div class="overlay-text">Acheron</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('burns')">
+            <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=600&fit=crop" alt="When It Burns">
+            <div class="overlay">
+                <div class="overlay-text">When It Burns</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('tedx')">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=600&fit=crop" alt="TedX">
+            <div class="overlay">
+                <div class="overlay-text">TedX</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('motion')">
+            <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=600&h=600&fit=crop" alt="Motion Design">
+            <div class="overlay">
+                <div class="overlay-text">Motion Design</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('firstfloor')">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=600&fit=crop" alt="FirstFloor">
+            <div class="overlay">
+                <div class="overlay-text">FirstFloor - Interior Design</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('smillin')">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=600&fit=crop" alt="Smillin Glass">
+            <div class="overlay">
+                <div class="overlay-text">Smillin' Glass</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('interviews')">
+            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=600&fit=crop" alt="Interviews">
+            <div class="overlay">
+                <div class="overlay-text">Interviews</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('european')">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=600&fit=crop" alt="European Capital">
+            <div class="overlay">
+                <div class="overlay-text">European Capital of Culture Elevsis</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('sue')">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=600&fit=crop" alt="Sue By The Sea">
+            <div class="overlay">
+                <div class="overlay-text">Sue By The Sea</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('vr')">
+            <img src="https://images.unsplash.com/photo-1617802690658-1173a812650d?w=600&h=600&fit=crop" alt="Virtual Reality">
+            <div class="overlay">
+                <div class="overlay-text">Virtual Reality</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('fanzine')">
+            <img src="https://images.unsplash.com/photo-1554224311-beee415c201f?w=600&h=600&fit=crop" alt="Fanzine">
+            <div class="overlay">
+                <div class="overlay-text">Fanzine Design</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('analogue')">
+            <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=600&h=600&fit=crop" alt="Analogue">
+            <div class="overlay">
+                <div class="overlay-text">Analogue</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('digital')">
+            <img src="https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=600&h=600&fit=crop" alt="Digital">
+            <div class="overlay">
+                <div class="overlay-text">Digital</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('user-testing')">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=600&fit=crop" alt="User Testing">
+            <div class="overlay">
+                <div class="overlay-text">User Testing</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('wireframes')">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop" alt="Wireframes">
+            <div class="overlay">
+                <div class="overlay-text">Wireframes & Prototypes</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('case-study')">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop" alt="Case Study">
+            <div class="overlay">
+                <div class="overlay-text">Case Study</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('bottle')">
+            <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&h=600&fit=crop" alt="Bottle Branding">
+            <div class="overlay">
+                <div class="overlay-text">Bottle Branding</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('security')">
+            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&h=600&fit=crop" alt="Security Process">
+            <div class="overlay">
+                <div class="overlay-text">Security Process Illustration</div>
+            </div>
+        </div>
+
+        <div class="gallery-item" onclick="showDetail('product')">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=600&fit=crop" alt="Product How It Works">
+            <div class="overlay">
+                <div class="overlay-text">Product How It Works</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Short Films Category Page -->
+            <div id="short-films" class="page">
+                <div class="gallery">
+                    <div class="gallery-item" onclick="showDetail('cruise')">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=600&fit=crop" alt="Cruise Me">
+                        <div class="overlay">
+                            <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('acheron')">
+                        <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=600&h=600&fit=crop" alt="Acheron">
+                        <div class="overlay">
+                            <div class="overlay-text">Acheron</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item wide" onclick="showDetail('burns')">
+                        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&h=400&fit=crop" alt="When It Burns">
+                        <div class="overlay">
+                            <div class="overlay-text">When It Burns</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corporate Category Page -->
+            <div id="corporate" class="page">
+                <div class="gallery">
+                    <div class="gallery-item" onclick="showDetail('tedx')">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=600&fit=crop" alt="TedX">
+                        <div class="overlay">
+                            <div class="overlay-text">TedX</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('motion')">
+                        <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=600&h=600&fit=crop" alt="Motion Design">
+                        <div class="overlay">
+                            <div class="overlay-text">Motion Design</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('firstfloor')">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=600&fit=crop" alt="FirstFloor">
+                        <div class="overlay">
+                            <div class="overlay-text">FirstFloor - Interior Design</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('smillin')">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=600&fit=crop" alt="Smillin Glass">
+                        <div class="overlay">
+                            <div class="overlay-text">Smillin' Glass</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('interviews')">
+                        <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=600&fit=crop" alt="Interviews">
+                        <div class="overlay">
+                            <div class="overlay-text">Interviews</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Installation Art Category Page -->
+            <div id="installation" class="page">
+                <div class="gallery">
+                    <div class="gallery-item" onclick="showDetail('european')">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=600&fit=crop" alt="European Capital">
+                        <div class="overlay">
+                            <div class="overlay-text">European Capital of Culture Elevsis</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('sue')">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=600&fit=crop" alt="Sue By The Sea">
+                        <div class="overlay">
+                            <div class="overlay-text">Sue By The Sea</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('vr')">
+                        <img src="https://images.unsplash.com/photo-1617802690658-1173a812650d?w=600&h=600&fit=crop" alt="Virtual Reality">
+                        <div class="overlay">
+                            <div class="overlay-text">Virtual Reality</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photography Category Page -->
+            <div id="photography" class="page">
+                <div class="gallery">
+                    <div class="gallery-item" onclick="showDetail('fanzine')">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee415c201f?w=600&h=600&fit=crop" alt="Fanzine Design">
+                        <div class="overlay">
+                            <div class="overlay-text">Fanzine Design</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('analogue')">
+                        <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=600&h=600&fit=crop" alt="Analogue">
+                        <div class="overlay">
+                            <div class="overlay-text">Analogue</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('digital')">
+                        <img src="https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=600&h=600&fit=crop" alt="Digital">
+                        <div class="overlay">
+                            <div class="overlay-text">Digital</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UX Research & Design Category Page -->
+<div id="ux-research" class="page">
+    <div class="gallery">
+        <div class="gallery-item" onclick="showDetail('user-testing')">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=600&fit=crop" alt="User Testing">
+            <div class="overlay">
+                <div class="overlay-text">User Testing</div>
+            </div>
+        </div>
+        <div class="gallery-item" onclick="showDetail('wireframes')">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop" alt="Wireframes">
+            <div class="overlay">
+                <div class="overlay-text">Wireframes & Prototypes</div>
+            </div>
+        </div>
+        <div class="gallery-item" onclick="showDetail('case-study')">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop" alt="Case Study">
+            <div class="overlay">
+                <div class="overlay-text">Case Study</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Graphic Design Category Page -->
+            <div id="graphic" class="page">
+                <div class="gallery">
+                    <div class="gallery-item" onclick="showDetail('bottle')">
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&h=600&fit=crop" alt="Bottle Branding">
+                        <div class="overlay">
+                            <div class="overlay-text">Bottle Branding</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('security')">
+                        <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&h=600&fit=crop" alt="Security Process">
+                        <div class="overlay">
+                            <div class="overlay-text">Security Process Illustration</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('product')">
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=600&fit=crop" alt="Product How It Works">
+                        <div class="overlay">
+                            <div class="overlay-text">Product How It Works</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Pages -->
+           <div id="detail-cruise" class="page detail-page">
+                <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Cruise Me, Cruise Me Babe</h1>
+                    <p class="detail-description"><strong>In Production</strong> 
+                        <br>
+An insomniac photographer, who, during a late-night phone call with a mysterious young woman, recalls witnessing a surreal encounter: the soul of a man dressed in a tuxedo, floating in the sky, guided through the streets of Luxembourg City by an angel.</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/1075270341" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop" alt="Cruise Me scene 1">
+                    </a>
+                    <a href="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=800&fit=crop" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=800&fit=crop" alt="Cruise Me scene 2">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-acheron" class="page detail-page">
+                <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Acheron</h1>
+                    <p class="detail-description">
+Marie is unable to escape a space-time loop after experiencing an accident. In order to break free, she must confront her innermost demons and come to terms with a traumatizing new reality.
+<br><br>
+Official Selection LuxFilmFest,
+FilmFestival Max Ophuls Preis,
+International Usak Short films
+Festival
+Festival Turkey Shorts
+<br>
+Production: CNA, FilmFund
+<br>
+Duration: 15min
+</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/700356005" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&h=800&fit=crop" alt="Acheron scene">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-burns" class="page detail-page">
+                <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">When It Burns</h1>
+                    <p class="detail-description">
+Official Selection INDIE SHORT AWARDS Buenos Aires.
+<br>
+Official selection Experimental Film Competition organised by Director Nicolas Winding Refn (Pusher Trilogy, Drive, Only God Forgives).</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/600314397" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&h=800&fit=crop" alt="When It Burns poster">
+                    </a>
+                </div>
+            </div>
+
+
+            <div id="detail-tedx" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">TedX</h1>
+                    <p class="detail-description">
+
+International School of Luxembourg
+<br>
+Directed and edited by Alexis Vandeweerd & Jules Wax
+<br>
+Production of the event, a Teaser, and a Making-Of
+</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/613517647" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&h=800&fit=crop" alt="TedX event">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-motion" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Motion Design</h1>
+                    <p class="detail-description">Dynamic motion graphics and animation projects for corporate clients.</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/1098530188" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=1200&h=800&fit=crop" alt="Motion Design">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-firstfloor" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">FirstFloor - Interior Design</h1>
+                    <p class="detail-description">Visual content creation for an interior design firm, showcasing beautiful spaces and design concepts. 
+                        <br>
+Directed and edited a promotional video</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/631959129" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop" alt="FirstFloor project">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-smillin" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Smillin' Glass</h1>
+                    <p class="detail-description">Commercial photography and video production for Smillin' Glass brand.
+                        <br>
+                        Directed and edited Promotional Instagram Snippets for a glass artist.
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/595793388" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&h=800&fit=crop" alt="Smillin Glass">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-interviews" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Interviews</h1>
+                    <p class="detail-description">Professional interview series capturing compelling stories and conversations.
+                        <br>
+                        Prepared, shot, edited client interviews, a workshop, and a promotional video
+                    </p>
+                </div>
+                <div class="detail-content">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&h=800&fit=crop" alt="Interview">
+                </div>
+            </div>
+            <!-- Installation Art Detail Pages -->
+            <div id="detail-european" class="page detail-page">
+                <button class="back-button" onclick="showCategory('installation')">← Back to Installation Art</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">European Capital of Culture Elevsis</h1>
+                    <p class="detail-description">Large-scale installation art project celebrating cultural heritage and contemporary artistic expression.
+                        <br>
+                        European Capital Of Culture2023, Eleusis, Grece
+   <br>
+Architectural and Interior design Conceptualisation: Judy Rodriguez
+   <br>
+Directed and edited by Jules Wax
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/551406902" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&h=800&fit=crop" alt="European Capital project">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-sue" class="page detail-page">
+                <button class="back-button" onclick="showCategory('installation')">← Back to Installation Art</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Sue By The Sea</h1>
+                    <p class="detail-description">An immersive installation exploring the relationship between urban environments and water.</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://www.youtube.com/watch?v=ncAj8gWMjL8" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=800&fit=crop" alt="Sue By The Sea">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-vr" class="page detail-page">
+                <button class="back-button" onclick="showCategory('installation')">← Back to Installation Art</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Virtual Reality</h1>
+                    <p class="detail-description">Immersive VR experiences pushing the boundaries of interactive art.
+                        <br>
+Looping 8min sequence video
+ <br>
+Directed and edited by Jules Wax & Alexis Vandeweerd
+ <br>
+Projected at Galerie 39, Dudelange, Luxembourg
+
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://www.youtube.com/watch?v=nTWIaC6965I" target="_blank">
+                        <img class="detail-image" src="https://images.unsplash.com/photo-1617802690658-1173a812650d?w=1200&h=800&fit=crop" alt="VR project">
+                    </a>
+                </div>
+            </div>
+
+
+
+            <!-- Photography Detail Pages -->
+            <div id="detail-fanzine" class="page detail-page">
+                <button class="back-button" onclick="showCategory('photography')">← Back to Photography</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Fanzine Design</h1>
+                    <p class="detail-description">Editorial photography and layout design for independent publications.
+                        <br>
+                        Double Japanese Binding 120g/m recycled paper Inkjet Printing.
+ <br>
+Reflecting on spatiality and our relationship to natural forces in Lanzarote Island.
+ <br>
+The island of Lanzarote generates feelings of familiarity, detachment, and isolation as if on another planet.
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="https://images.unsplash.com/photo-1554224311-beee415c201f?w=1200&h=800&fit=crop" alt="Fanzine">
+                </div>
+            </div>
+
+            <div id="detail-analogue" class="page detail-page">
+                <button class="back-button" onclick="showCategory('photography')">← Back to Photography</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Analogue</h1>
+                    <p class="detail-description">Film photography exploring texture, grain, and the beauty of analogue processes. 
+                        <br>
+
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&h=800&fit=crop" alt="Analogue photography">
+                </div>
+            </div>
+
+            <div id="detail-digital" class="page detail-page">
+                <button class="back-button" onclick="showCategory('photography')">← Back to Photography</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Digital</h1>
+                    <p class="detail-description">Contemporary digital photography capturing our deep and mystic relationship to nature's unsettling greatness.</p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=1200&h=800&fit=crop" alt="Digital photography">
+                </div>
+            </div>
+
+            <!-- UX Research & Design Detail Pages -->
+<div id="detail-user-testing" class="page detail-page">
+    <button class="back-button" onclick="showCategory('ux-research')">← Back to UX Research & Design</button>
+    <div class="detail-header">
+        <h1 class="detail-title">User Testing</h1>
+        <p class="detail-description">Comprehensive user testing and research projects to inform design decisions.</p>
+    </div>
+    <div class="detail-content">
+        <img class="detail-image" src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1200&h=800&fit=crop" alt="User Testing">
+    </div>
+</div>
+
+<div id="detail-wireframes" class="page detail-page">
+    <button class="back-button" onclick="showCategory('ux-research')">← Back to UX Research & Design</button>
+    <div class="detail-header">
+        <h1 class="detail-title">Wireframes & Prototypes</h1>
+        <p class="detail-description">Interactive prototypes and wireframes for digital products and services.</p>
+    </div>
+    <div class="detail-content">
+        <img class="detail-image" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop" alt="Wireframes">
+    </div>
+</div>
+
+<div id="detail-case-study" class="page detail-page">
+    <button class="back-button" onclick="showCategory('ux-research')">← Back to UX Research & Design</button>
+    <div class="detail-header">
+        <h1 class="detail-title">Case Study</h1>
+        <p class="detail-description">In-depth UX case studies documenting the design process from research to implementation.</p>
+    </div>
+    <div class="detail-content">
+        <img class="detail-image" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop" alt="Case Study">
+    </div>
+</div>
+
+            <!-- Graphic Design Detail Pages -->
+            <div id="detail-bottle"
+class="page detail-page">
+                <button class="back-button" onclick="showCategory('graphic')">← Back to Graphic Design</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Bottle Branding</h1>
+                    <p class="detail-description">Brand identity and packaging design for bottle products.
+                        <br>
+Bottle Branding Goodies for a private event with clients & Investors
+<br>
+Reinvestigating Luxembourg's natural, Cultural and Modern landscapes
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1200&h=800&fit=crop" alt="Bottle Branding">
+                </div>
+            </div>
+
+            <div id="detail-security" class="page detail-page">
+                <button class="back-button" onclick="showCategory('graphic')">← Back to Graphic Design</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Security Process Illustration</h1>
+                    <p class="detail-description">Technical illustrations for security processes and workflows.</p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=1200&h=800&fit=crop" alt="Security Process">
+                </div>
+            </div>
+
+            <div id="detail-product" class="page detail-page">
+                <button class="back-button" onclick="showCategory('graphic')">← Back to Graphic Design</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Product How It Works</h1>
+                    <p class="detail-description">Visual explanations of product features and functionality.</p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1200&h=800&fit=crop" alt="Product How It Works">
+                </div>
+            </div>
+        </main>
+    </div>
+            <script>
+    function showHome() {
+        hideAllPages();
+        document.getElementById('home').classList.add('active');
+    }
+
+    function showCategory(categoryId) {
+        hideAllPages();
+        document.getElementById(categoryId).classList.add('active');
+    }
+
+    function showDetail(detailId) {
+        hideAllPages();
+        document.getElementById('detail-' + detailId).classList.add('active');
+    }
+
+    function hideAllPages() {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+    }
+    </script>
+</body>
+</html>
