@@ -650,7 +650,6 @@ Duration: 15min
 <img class="detail-image" src="/JulesWax/Assets/Acheron2.jpg" alt="Acheron scene 2">
                     </a>
                 </div>
-            </div>
 
             <div id="detail-burns" class="page detail-page">
                 <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
