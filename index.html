@@ -13,7 +13,7 @@
         }
 
         body {
-              font-family: "baga", sans-serif;
+            font-family: "baga", sans-serif;
             font-weight: 300;
             font-style: normal;
             background-color: #f5f5f5;
@@ -100,6 +100,20 @@
 
         .page.active {
             display: block;
+        }
+
+        .category-section {
+            margin-bottom: 80px;
+        }
+
+        .category-title {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
         }
 
         .gallery {
@@ -248,6 +262,10 @@
             .detail-title {
                 font-size: 32px;
             }
+
+            .category-title {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -260,8 +278,8 @@
             <nav class="nav-section">
                 <h2 class="nav-title" onclick="showCategory('short-films')">Short Films</h2>
                 <a class="nav-link" onclick="showDetail('cruise')">Cruise Me, Cruise Me Babe</a>
-<a class="nav-link" onclick="showDetail('acheron')">Acheron</a>
-<a class="nav-link" onclick="showDetail('burns')">When It Burns</a>
+                <a class="nav-link" onclick="showDetail('acheron')">Acheron</a>
+                <a class="nav-link" onclick="showDetail('burns')">When It Burns</a>
             </nav>
 
             <nav class="nav-section">
@@ -273,12 +291,12 @@
                 <a class="nav-link" onclick="showDetail('interviews')">Interviews</a>
             </nav>
 
-             <nav class="nav-section">
-    <h2 class="nav-title" onclick="showCategory('ux-research')">UX Research & Design</h2>
-    <a class="nav-link" onclick="showDetail('user-testing')">User Testing</a>
-    <a class="nav-link" onclick="showDetail('wireframes')">Wireframes & Prototypes</a>
-    <a class="nav-link" onclick="showDetail('case-study')">Case Study</a>
-</nav>
+            <nav class="nav-section">
+                <h2 class="nav-title" onclick="showCategory('ux-research')">UX Research & Design</h2>
+                <a class="nav-link" onclick="showDetail('user-testing')">User Testing</a>
+                <a class="nav-link" onclick="showDetail('wireframes')">Wireframes & Prototypes</a>
+                <a class="nav-link" onclick="showDetail('case-study')">Case Study</a>
+            </nav>
 
             <nav class="nav-section">
                 <h2 class="nav-title" onclick="showCategory('graphic')">Graphic Design</h2>
@@ -309,170 +327,171 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Home Page -->
-          <div id="home" class="page active">
-    <!-- Short Films Section -->
-    <section class="category-section">
-        <h2 class="category-title">Short Films</h2>
-        <div class="gallery">
-            <div class="gallery-item" onclick="showDetail('cruise')">
-                <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
-                <div class="overlay">
-                    <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('acheron')">
-                <img class="detail-image" src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
-                <div class="overlay">
-                    <div class="overlay-text">Acheron</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('burns')">
-                <img src="/JulesWax/Assets/WhenItBurns.jpg" alt="When It Burns">
-                <div class="overlay">
-                    <div class="overlay-text">When It Burns</div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- Home Page with Sections -->
+            <div id="home" class="page active">
+                <!-- Short Films Section -->
+                <section class="category-section">
+                    <h2 class="category-title">Short Films</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="showDetail('cruise')">
+                            <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
+                            <div class="overlay">
+                                <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('acheron')">
+                            <img src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
+                            <div class="overlay">
+                                <div class="overlay-text">Acheron</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('burns')">
+                            <img src="/JulesWax/Assets/WhenItBurns.jpg" alt="When It Burns">
+                            <div class="overlay">
+                                <div class="overlay-text">When It Burns</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    <!-- Corporate Section -->
-    <section class="category-section">
-        <h2 class="category-title">Corporate</h2>
-        <div class="gallery">
-            <div class="gallery-item" onclick="showDetail('tedx')">
-                <img src="/JulesWax/Assets/TedX.jpg" alt="TedX">
-                <div class="overlay">
-                    <div class="overlay-text">TedX</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('motion')">
-                <img src="/JulesWax/Assets/Motion.jpg" alt="Motion Design">
-                <div class="overlay">
-                    <div class="overlay-text">Motion Design</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('firstfloor')">
-                <img src="/JulesWax/Assets/FirstFloor.jpg" alt="FirstFloor">
-                <div class="overlay">
-                    <div class="overlay-text">FirstFloor - Interior Design</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('smilin')">
-                <img src="/JulesWax/Assets/SmilinGlass.jpg" alt="Smilin Glass">
-                <div class="overlay">
-                    <div class="overlay-text">Smilin' Glass</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('interviews')">
-                <img src="/JulesWax/Assets/Interviews.png" alt="Interviews">
-                <div class="overlay">
-                    <div class="overlay-text">Interviews</div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- Corporate Section -->
+                <section class="category-section">
+                    <h2 class="category-title">Corporate</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="showDetail('tedx')">
+                            <img src="/JulesWax/Assets/TedX.jpg" alt="TedX">
+                            <div class="overlay">
+                                <div class="overlay-text">TedX</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('motion')">
+                            <img src="/JulesWax/Assets/Motion.jpg" alt="Motion Design">
+                            <div class="overlay">
+                                <div class="overlay-text">Motion Design</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('firstfloor')">
+                            <img src="/JulesWax/Assets/FirstFloor.jpg" alt="FirstFloor">
+                            <div class="overlay">
+                                <div class="overlay-text">FirstFloor - Interior Design</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('smilin')">
+                            <img src="/JulesWax/Assets/SmilinGlass.jpg" alt="Smilin Glass">
+                            <div class="overlay">
+                                <div class="overlay-text">Smilin' Glass</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('interviews')">
+                            <img src="/JulesWax/Assets/Interviews.png" alt="Interviews">
+                            <div class="overlay">
+                                <div class="overlay-text">Interviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    <!-- UX Research & Design Section -->
-    <section class="category-section">
-        <h2 class="category-title">UX Research & Design</h2>
-        <div class="gallery">
-            <div class="gallery-item" onclick="showDetail('user-testing')">
-                <img src="Assets/UX.png" alt="User Testing">
-                <div class="overlay">
-                    <div class="overlay-text">User Testing</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('wireframes')">
-                <img src="Assets/UX.png" alt="Wireframes">
-                <div class="overlay">
-                    <div class="overlay-text">Wireframes & Prototypes</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('case-study')">
-                <img src="Assets/UX.png" alt="Case Study">
-                <div class="overlay">
-                    <div class="overlay-text">Case Study</div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- UX Research & Design Section -->
+                <section class="category-section">
+                    <h2 class="category-title">UX Research & Design</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="showDetail('user-testing')">
+                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=600&fit=crop" alt="User Testing">
+                            <div class="overlay">
+                                <div class="overlay-text">User Testing</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('wireframes')">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop" alt="Wireframes">
+                            <div class="overlay">
+                                <div class="overlay-text">Wireframes & Prototypes</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('case-study')">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop" alt="Case Study">
+                            <div class="overlay">
+                                <div class="overlay-text">Case Study</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    <!-- Graphic Design Section -->
-    <section class="category-section">
-        <h2 class="category-title">Graphic Design</h2>
-        <div class="gallery">
-            <div class="gallery-item" onclick="showDetail('bottle')">
-                <img src="Assets/BottleBranding.png" alt="Bottle Branding">
-                <div class="overlay">
-                    <div class="overlay-text">Bottle Branding</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('security')">
-                <img src="/JulesWax/Assets/Security.png" alt="Security Process">
-                <div class="overlay">
-                    <div class="overlay-text">Security Process Illustration</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('product')">
-                <img src="Assets/Works.png" alt="Product How It Works">
-                <div class="overlay">
-                    <div class="overlay-text">Product How It Works</div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- Graphic Design Section -->
+                <section class="category-section">
+                    <h2 class="category-title">Graphic Design</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="showDetail('bottle')">
+                            <img src="Assets/BottleBranding.png" alt="Bottle Branding">
+                            <div class="overlay">
+                                <div class="overlay-text">Bottle Branding</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('security')">
+                            <img src="/JulesWax/Assets/Security.png" alt="Security Process">
+                            <div class="overlay">
+                                <div class="overlay-text">Security Process Illustration</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('product')">
+                            <img src="Assets/Works.png" alt="Product How It Works">
+                            <div class="overlay">
+                                <div class="overlay-text">Product How It Works</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    <!-- Installation Art Section -->
-    <section class="category-section">
-        <h2 class="category-title">Installation Art</h2>
-        <div class="gallery">
-            <div class="gallery-item" onclick="showDetail('european')">
-                <img src="/JulesWax/Assets/Symbiosis.jpg" alt="European Capital">
-                <div class="overlay">
-                    <div class="overlay-text">European Capital of Culture Elevsis</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('sue')">
-                <img src="/JulesWax/Assets/Sue.png" alt="Sue By The Sea">
-                <div class="overlay">
-                    <div class="overlay-text">Sue By The Sea</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('vr')">
-                <img src="/JulesWax/Assets/Vr.png" alt="Virtual Reality">
-                <div class="overlay">
-                    <div class="overlay-text">Virtual Reality</div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- Installation Art Section -->
+                <section class="category-section">
+                    <h2 class="category-title">Installation Art</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="showDetail('european')">
+                            <img src="/JulesWax/Assets/Symbiosis.jpg" alt="European Capital">
+                            <div class="overlay">
+                                <div class="overlay-text">European Capital of Culture Elevsis</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('sue')">
+                            <img src="/JulesWax/Assets/Sue.png" alt="Sue By The Sea">
+                            <div class="overlay">
+                                <div class="overlay-text">Sue By The Sea</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('vr')">
+                            <img src="/JulesWax/Assets/Vr.png" alt="Virtual Reality">
+                            <div class="overlay">
+                                <div class="overlay-text">Virtual Reality</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    <!-- Photography Section -->
-    <section class="category-section">
-        <h2 class="category-title">Photography</h2>
-        <div class="gallery">
-            <div class="gallery-item" onclick="showDetail('fanzine')">
-                <img src="/JulesWax/Assets/Fanzine.png" alt="Fanzine">
-                <div class="overlay">
-                    <div class="overlay-text">Fanzine Design</div>
-                </div>
+                <!-- Photography Section -->
+                <section class="category-section">
+                    <h2 class="category-title">Photography</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="showDetail('fanzine')">
+                            <img src="/JulesWax/Assets/Fanzine.png" alt="Fanzine">
+                            <div class="overlay">
+                                <div class="overlay-text">Fanzine Design</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('analogue')">
+                            <img src="/JulesWax/Assets/Analogue.png" alt="Analogue">
+                            <div class="overlay">
+                                <div class="overlay-text">Analogue</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" onclick="showDetail('digital')">
+                            <img src="/JulesWax/Assets/Digital.jpg" alt="Digital">
+                            <div class="overlay">
+                                <div class="overlay-text">Digital</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div class="gallery-item" onclick="showDetail('analogue')">
-                <img src="/JulesWax/Assets/Analogue.png" alt="Analogue">
-                <div class="overlay">
-                    <div class="overlay-text">Analogue</div>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="showDetail('digital')">
-                <img src="/JulesWax/Assets/Digital.jpg" alt="Digital">
-                <div class="overlay">
-                    <div class="overlay-text">Digital</div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+
             <!-- Short Films Category Page -->
             <div id="short-films" class="page">
                 <div class="gallery">
@@ -483,7 +502,7 @@
                         </div>
                     </div>
                     <div class="gallery-item" onclick="showDetail('acheron')">
-                        <img class="detail-image" src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
+                        <img src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
                         <div class="overlay">
                             <div class="overlay-text">Acheron</div>
                         </div>
@@ -549,7 +568,7 @@
                         </div>
                     </div>
                     <div class="gallery-item" onclick="showDetail('vr')">
-                        <img src="/JulesWax/Assets/Vr.jng" alt="Virtual Reality">
+                        <img src="/JulesWax/Assets/Vr.png" alt="Virtual Reality">
                         <div class="overlay">
                             <div class="overlay-text">Virtual Reality</div>
                         </div>
@@ -582,28 +601,28 @@
             </div>
 
             <!-- UX Research & Design Category Page -->
-<div id="ux-research" class="page">
-    <div class="gallery">
-        <div class="gallery-item" onclick="showDetail('user-testing')">
-            <img src="Assets/UX.png" alt="User Testing">
-            <div class="overlay">
-                <div class="overlay-text">User Testing</div>
+            <div id="ux-research" class="page">
+                <div class="gallery">
+                    <div class="gallery-item" onclick="showDetail('user-testing')">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=600&fit=crop" alt="User Testing">
+                        <div class="overlay">
+                            <div class="overlay-text">User Testing</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('wireframes')">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop" alt="Wireframes">
+                        <div class="overlay">
+                            <div class="overlay-text">Wireframes & Prototypes</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('case-study')">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop" alt="Case Study">
+                        <div class="overlay">
+                            <div class="overlay-text">Case Study</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="gallery-item" onclick="showDetail('wireframes')">
-            <img src="Assets/UX.png">
-            <div class="overlay">
-                <div class="overlay-text">Wireframes & Prototypes</div>
-            </div>
-        </div>
-        <div class="gallery-item" onclick="showDetail('case-study')">
-            <img src="Assets/UX.png" alt="Case Study">
-            <div class="overlay">
-                <div class="overlay-text">Case Study</div>
-            </div>
-        </div>
-    </div>
-</div>
 
             <!-- Graphic Design Category Page -->
             <div id="graphic" class="page">
@@ -630,7 +649,7 @@
             </div>
 
             <!-- Detail Pages -->
-           <div id="detail-cruise" class="page detail-page">
+            <div id="detail-cruise" class="page detail-page">
                 <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
                 <div class="detail-header">
                     <h1 class="detail-title">Cruise Me, Cruise Me Babe</h1>
@@ -640,7 +659,10 @@ An insomniac photographer, who, during a late-night phone call with a mysterious
                 </div>
                 <div class="detail-content">
                     <a href="https://vimeo.com/1075270341" target="_blank">
-                        <img class="detail-image" src="/JulesWax/Assets/Moodboard.png" alt="Cruise Me scene 1">
+                        <img class="detail-image" src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me scene 1">
+                    </a>
+                    <a href="/JulesWax/Assets/AfficheCruiseMe.png" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Moodboard.png" alt="Cruise Me scene 2">
                     </a>
                 </div>
             </div>
@@ -696,13 +718,11 @@ Official selection Experimental Film Competition organised by Director Nicolas W
                 </div>
             </div>
 
-
             <div id="detail-tedx" class="page detail-page">
                 <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
                 <div class="detail-header">
                     <h1 class="detail-title">TedX</h1>
                     <p class="detail-description">
-
 International School of Luxembourg
 <br>
 Directed and edited by Alexis Vandeweerd & Jules Wax
