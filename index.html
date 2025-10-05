@@ -327,35 +327,7 @@
     border-radius: 0;
 }
 
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 80px 20px 20px;
-            }
-
-            .about-section {
-                padding: 40px 30px;
-            }
-
-            .about-title {
-                font-size: 32px;
-            }
-
-            .about-page-section {
+        .about-page-section {
     display: flex;
     gap: 60px;
     align-items: flex-start;
@@ -404,7 +376,35 @@
         width: 100%;
         height: 300px;
     }
-}
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 80px 20px 20px;
+            }
+
+            .about-section {
+                padding: 40px 30px;
+            }
+
+            .about-title {
+                font-size: 32px;
+            }
+        }
 
             .gallery {
                 grid-template-columns: 1fr;
@@ -511,32 +511,36 @@
                 </section>
 
                 <!-- About Page -->
-    <div class="about-page-section">
-        <div class="about-photo">
-            <img src="/JulesWax/Assets/Profile.jpg" alt="Jules Wax">
-            <!-- If you don't have a photo yet, the gray placeholder will show -->
-        </div>
-        <div class="about-text-content">
-            <h2>About Jules Wax</h2>
-            <p>
-                Based in Luxembourg, I craft visual stories across film, design, and immersive experiences. 
-                With a multidisciplinary approach spanning short films, corporate productions, UX design, and installation art, 
-                I explore the intersection of technology, narrative, and human experience.
-            </p>
-            <p>
-                My work has been featured at international film festivals including LuxFilmFest, FilmFestival Max Ophuls Preis, 
-                and the INDIE SHORT AWARDS Buenos Aires. I've also contributed to cultural exhibitions across Europe, 
-                including the European Capital of Culture 2023 in Eleusis, Greece.
-            </p>
-            <p>
-                I approach each project with curiosity and attention to detail, whether directing short films, 
-                designing user experiences, or creating immersive installations. My goal is to create work that 
-                resonates emotionally while pushing creative boundaries.
-            </p>
-        </div>
-    </div>
 </div>
+
+            <!-- About Page -->
             <div id="about" class="page">
+                <div class="about-page-section">
+                    <div class="about-photo">
+                        <img src="/JulesWax/Assets/Profile.jpg" alt="Jules Wax">
+                    </div>
+                    <div class="about-text-content">
+                        <h2>About Jules Wax</h2>
+                        <p>
+                            Based in Luxembourg, I craft visual stories across film, design, and immersive experiences. 
+                            With a multidisciplinary approach spanning short films, corporate productions, UX design, and installation art, 
+                            I explore the intersection of technology, narrative, and human experience.
+                        </p>
+                        <p>
+                            My work has been featured at international film festivals including LuxFilmFest, FilmFestival Max Ophuls Preis, 
+                            and the INDIE SHORT AWARDS Buenos Aires. I've also contributed to cultural exhibitions across Europe, including the European Capital of Culture 2023 in Eleusis, Greece.
+                        </p>
+                        <p>
+                            Beyond filmmaking, I've contributed to large-scale cultural projects and work extensively in the corporate sector, creating motion design, promotional videos, and documentary-style content for various clients.
+                        </p>
+                        <p>
+                            I approach each project with curiosity and attention to detail, whether directing short films, 
+                            designing user experiences, or creating immersive installations. My goal is to create work that 
+                            resonates emotionally while pushing creative boundaries.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
                 <!-- Short Films Section -->
                 <section class="category-section">
@@ -630,6 +634,16 @@
                         </div>
                         <div class="gallery-item" onclick="showDetail('ux-assessment')">
     <img src="/JulesWax/Assets/UX_Assessment.png" alt="Assessment Platform">
+    <div class="overlay">
+        <div class="overlay-text">Assessment Platform</div>
+    </div>
+</div>
+<div class="gallery-item" onclick="showDetail('ux-results')">
+    <img src="/JulesWax/Assets/UX_Results.png" alt="Results Platform">
+    <div class="overlay">
+        <div class="overlay-text">Results Platform</div>
+    </div>
+</div>
     <div class="overlay">
         <div class="overlay-text">Assessment Platform</div>
     </div>
@@ -857,19 +871,17 @@
                         </div>
                     </div>
                     <div class="gallery-item" onclick="showDetail('ux-assessment')">
-                        <img src="/JulesWax/Assets/U
-                    <div class="gallery-item" onclick="showDetail('wireframes')">
-                        <img src="/JulesWax/Assets/UX2.png" alt="Wireframes">
-                        <div class="overlay">
-                            <div class="overlay-text">Wireframes & Prototypes</div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="showDetail('case-study')">
-                        <img src="/JulesWax/Assets/UX3.png" alt="Case Study">
-                        <div class="overlay">
-                            <div class="overlay-text">Case Study</div>
-                        </div>
-                    </div>
+    <img src="/JulesWax/Assets/UX_Assessment.png" alt="Assessment Platform">
+    <div class="overlay">
+        <div class="overlay-text">Assessment Platform</div>
+    </div>
+</div>
+<div class="gallery-item" onclick="showDetail('ux-results')">
+    <img src="/JulesWax/Assets/UX_Results.png" alt="Results Platform">
+    <div class="overlay">
+        <div class="overlay-text">Results Platform</div>
+    </div>
+</div>
                 </div>
             </div>
 
