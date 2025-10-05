@@ -224,11 +224,11 @@
         }
 
         .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
         .gallery-item.large {
             grid-column: span 2;
@@ -362,6 +362,57 @@
                 font-size: 32px;
             }
 
+            .about-page-section {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 60px;
+}
+
+.about-photo {
+    flex-shrink: 0;
+    width: 300px;
+    height: 400px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-text-content {
+    flex: 1;
+}
+
+.about-text-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.about-text-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .about-page-section {
+        flex-direction: column;
+    }
+    
+    .about-photo {
+        width: 100%;
+        height: 300px;
+    }
+}
+
             .gallery {
                 grid-template-columns: 1fr;
             }
@@ -442,6 +493,10 @@
             </nav>
 
             <nav class="nav-section">
+    <h2 class="nav-title" onclick="showPage('about'); closeMobileMenu();">About</h2>
+</nav>
+
+            <nav class="nav-section">
                 <h2 class="nav-title">Contact</h2>
                 <a href="mailto:contact@juleswax.com" class="nav-link">Get in Touch</a>
             </nav>
@@ -461,6 +516,34 @@
                         international film festivals and cultural exhibitions across Europe.
                     </p>
                 </section>
+
+                <!-- About Page -->
+<div id="about" class="page">
+    <div class="about-page-section">
+        <div class="about-photo">
+            <img src="/JulesWax/Assets/Profile.jpg" alt="Jules Wax">
+            <!-- If you don't have a photo yet, the gray placeholder will show -->
+        </div>
+        <div class="about-text-content">
+            <h2>About Jules Wax</h2>
+            <p>
+                Based in Luxembourg, I craft visual stories across film, design, and immersive experiences. 
+                With a multidisciplinary approach spanning short films, corporate productions, UX design, and installation art, 
+                I explore the intersection of technology, narrative, and human experience.
+            </p>
+            <p>
+                My work has been featured at international film festivals including LuxFilmFest, FilmFestival Max Ophuls Preis, 
+                and the INDIE SHORT AWARDS Buenos Aires. I've also contributed to cultural exhibitions across Europe, 
+                including the European Capital of Culture 2023 in Eleusis, Greece.
+            </p>
+            <p>
+                I approach each project with curiosity and attention to detail, whether directing short films, 
+                designing user experiences, or creating immersive installations. My goal is to create work that 
+                resonates emotionally while pushing creative boundaries.
+            </p>
+        </div>
+    </div>
+</div>
 
                 <!-- Short Films Section -->
                 <section class="category-section">
@@ -553,20 +636,17 @@
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('ux-assessment')">
-                            <span class="project-year">2024</span>
-                            <img src="/JulesWax/Assets/UX_Assessment.png" alt="Assessment Platform">
-                            <div class="overlay">
-                                <div class="overlay-text">Assessment Platform</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" onclick="showDetail('ux-results')">
-                            <span class="project-year">2024</span>
-                            <img src="/JulesWax/Assets/UX_Results.png" alt="Results Platform">
-                            <div class="overlay">
-                                <div class="overlay-text">Results Platform</div>
-                            </div>
-                        </div>
-                    </div>
+    <img src="/JulesWax/Assets/UX_Assessment.png" alt="Assessment Platform">
+    <div class="overlay">
+        <div class="overlay-text">Assessment Platform</div>
+    </div>
+</div>
+<div class="gallery-item" onclick="showDetail('ux-results')">
+    <img src="/JulesWax/Assets/UX_Results.png" alt="Results Platform">
+    <div class="overlay">
+        <div class="overlay-text">Results Platform</div>
+    </div>
+</div>                    </div>
                 </section>
 
                 <!-- Graphic Design Section -->
@@ -1087,22 +1167,39 @@ The island of Lanzarote generates feelings of familiarity, detachment, and isola
             </div>
 
             <!-- UX Research & Design Detail Pages -->
-<div id="detail-user-testing" class="page detail-page">
+<!-- UX Mobile Detail Page -->
+<div id="detail-ux-mobile" class="page detail-page">
     <button class="back-button" onclick="showCategory('ux-research')">← Back to UX Research & Design</button>
     <div class="detail-header">
-        <h1 class="detail-title">User Testing</h1>
-        <p class="detail-description">Comprehensive user testing and research projects to inform design decisions.</p>
-    </div>
-    <div class="detail-header">
-        <h1 class="detail-title">Wireframes & Prototypes</h1>
-        <p class="detail-description">Interactive prototypes and wireframes for digital products and services.</p>
-    </div>
-    <div class="detail-header">
-        <h1 class="detail-title">Case Study</h1>
-        <p class="detail-description">In-depth UX case studies documenting the design process from research to implementation.</p>
+        <h1 class="detail-title">Mobile App Design</h1>
+        <p class="detail-description">User-centered mobile application design focusing on intuitive navigation and engaging user experiences.</p>
     </div>
     <div class="detail-content">
-        <img class="detail-image" src="Assets/UX.png" alt="User Testing">
+        <img class="detail-image" src="/JulesWax/Assets/UX_Mobile.png" alt="Mobile App Design">
+    </div>
+</div>
+
+<!-- UX Assessment Platform Detail Page -->
+<div id="detail-ux-assessment" class="page detail-page">
+    <button class="back-button" onclick="showCategory('ux-research')">← Back to UX Research & Design</button>
+    <div class="detail-header">
+        <h1 class="detail-title">Assessment Platform</h1>
+        <p class="detail-description">Comprehensive assessment platform design with focus on user testing and data-driven insights.</p>
+    </div>
+    <div class="detail-content">
+        <img class="detail-image" src="/JulesWax/Assets/UX_Assessment.png" alt="Assessment Platform">
+    </div>
+</div>
+
+<!-- UX Results Platform Detail Page -->
+<div id="detail-ux-results" class="page detail-page">
+    <button class="back-button" onclick="showCategory('ux-research')">← Back to UX Research & Design</button>
+    <div class="detail-header">
+        <h1 class="detail-title">Results Platform</h1>
+        <p class="detail-description">Results visualization platform designed to present complex data in an accessible and actionable format.</p>
+    </div>
+    <div class="detail-content">
+        <img class="detail-image" src="/JulesWax/Assets/UX_Results.png" alt="Results Platform">
     </div>
 </div>
 
@@ -1173,6 +1270,19 @@ Reinvestigating Luxembourg's natural, Cultural and Modern landscapes
         const pages = document.querySelectorAll('.page');
         pages.forEach(page => page.classList.remove('active'));
     }
+
+                function showPage(pageId) {
+    hideAllPages();
+    document.getElementById(pageId).classList.add('active');
+}
+
+function toggleMobileMenu() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+function closeMobileMenu() {
+    document.getElementById('sidebar').classList.remove('open');
+}
     </script>
 </body>
 </html>
