@@ -34,23 +34,6 @@
             height: 100vh;
             overflow-y: auto;
             box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-            z-index: 100;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 101;
-            background-color: #1a1a1a;
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 18px;
         }
 
         .logo {
@@ -88,18 +71,6 @@
 
         .nav-title.active {
             color: #000;
-            position: relative;
-        }
-
-        .nav-title.active::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 100%;
-            background-color: #1a1a1a;
         }
 
         .nav-link {
@@ -110,16 +81,10 @@
             font-size: 15px;
             transition: color 0.3s ease;
             cursor: pointer;
-            position: relative;
         }
 
         .nav-link:hover {
             color: #333;
-        }
-
-        .nav-link.active {
-            color: #1a1a1a;
-            font-weight: 500;
         }
 
         /* Main Content Area */
@@ -127,18 +92,6 @@
             margin-left: 300px;
             flex: 1;
             padding: 40px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .page {
@@ -147,56 +100,20 @@
 
         .page.active {
             display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        /* About Section */
-        .about-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px;
-            border-radius: 12px;
-            margin-bottom: 80px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .about-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .about-text {
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 800px;
         }
 
         .category-section {
             margin-bottom: 120px;
         }
 
-        .category-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
         .category-title {
             font-size: 32px;
             font-weight: 700;
             letter-spacing: 1px;
+            margin-bottom: 30px;
             color: #1a1a1a;
             padding-bottom: 15px;
-            border-bottom: 3px solid #1a1a1a;
-            display: inline-block;
-        }
-
-        .category-count {
-            font-size: 14px;
-            color: #999;
-            font-weight: 500;
+            border-bottom: 2px solid #e0e0e0;
         }
 
         .gallery {
@@ -249,13 +166,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.7);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            backdrop-filter: blur(5px);
         }
 
         .gallery-item:hover .overlay {
@@ -268,18 +184,6 @@
             font-weight: 500;
             text-align: center;
             padding: 20px;
-        }
-
-        .project-year {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: rgba(255,255,255,0.95);
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 20px;
-            z-index: 10;
         }
 
         /* Detail Page */
@@ -317,7 +221,6 @@
             cursor: pointer;
             border: none;
             margin-bottom: 40px;
-            border-radius: 4px;
         }
 
         .back-button:hover {
@@ -332,34 +235,20 @@
         .detail-image {
             width: 100%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border-radius: 8px;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
             .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
+                width: 100%;
+                position: relative;
+                height: auto;
+                padding: 30px 20px;
             }
 
             .main-content {
                 margin-left: 0;
-                padding: 80px 20px 20px;
-            }
-
-            .about-section {
-                padding: 40px 30px;
-            }
-
-            .about-title {
-                font-size: 32px;
+                padding: 20px;
             }
 
             .gallery {
@@ -380,65 +269,57 @@
             .category-title {
                 font-size: 24px;
             }
-
-            .category-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
         }
     </style>
 </head>
 <body>
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰ Menu</button>
-
     <div class="container">
         <!-- Sidebar Navigation -->
-        <aside class="sidebar" id="sidebar">
-            <h1 class="logo" onclick="showHome(); closeMobileMenu();">JULES WAX</h1>
+        <aside class="sidebar">
+            <h1 class="logo" onclick="showHome()">JULES WAX</h1>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('short-films'); closeMobileMenu();">Short Films</h2>
-                <a class="nav-link" onclick="showDetail('cruise'); closeMobileMenu();">Cruise Me, Cruise Me Babe</a>
-                <a class="nav-link" onclick="showDetail('acheron'); closeMobileMenu();">Acheron</a>
-                <a class="nav-link" onclick="showDetail('burns'); closeMobileMenu();">When It Burns</a>
+                <h2 class="nav-title" onclick="showCategory('short-films')">Short Films</h2>
+                <a class="nav-link" onclick="showDetail('cruise')">Cruise Me, Cruise Me Babe</a>
+                <a class="nav-link" onclick="showDetail('acheron')">Acheron</a>
+                <a class="nav-link" onclick="showDetail('burns')">When It Burns</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('corporate'); closeMobileMenu();">Corporate</h2>
-                <a class="nav-link" onclick="showDetail('tedx'); closeMobileMenu();">TedX</a>
-                <a class="nav-link" onclick="showDetail('motion'); closeMobileMenu();">Motion Design</a>
-                <a class="nav-link" onclick="showDetail('firstfloor'); closeMobileMenu();">FirstFloor - Interior Design</a>
-                <a class="nav-link" onclick="showDetail('smilin'); closeMobileMenu();">Smilin' Glass</a>
-                <a class="nav-link" onclick="showDetail('interviews'); closeMobileMenu();">Interviews</a>
+                <h2 class="nav-title" onclick="showCategory('corporate')">Corporate</h2>
+                <a class="nav-link" onclick="showDetail('tedx')">TedX</a>
+                <a class="nav-link" onclick="showDetail('motion')">Motion Design</a>
+                <a class="nav-link" onclick="showDetail('firstfloor')">FirstFloor - Interior Design</a>
+                <a class="nav-link" onclick="showDetail('smilin')">Smilin' Glass</a>
+                <a class="nav-link" onclick="showDetail('interviews')">Interviews</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('ux-research'); closeMobileMenu();">UX Research & Design</h2>
-                <a class="nav-link" onclick="showDetail('ux-mobile'); closeMobileMenu();">Mobile App Design</a>
-                <a class="nav-link" onclick="showDetail('ux-assessment'); closeMobileMenu();">Assessment Platform</a>
-                <a class="nav-link" onclick="showDetail('ux-results'); closeMobileMenu();">Results Platform</a>
+                <h2 class="nav-title" onclick="showCategory('ux-research')">UX Research & Design</h2>
+                <a class="nav-link" onclick="showDetail('user-testing')">User Testing</a>
+                <a class="nav-link" onclick="showDetail('wireframes')">Wireframes & Prototypes</a>
+                <a class="nav-link" onclick="showDetail('case-study')">Case Study</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('graphic'); closeMobileMenu();">Graphic Design</h2>
-                <a class="nav-link" onclick="showDetail('bottle'); closeMobileMenu();">Bottle Branding</a>
-                <a class="nav-link" onclick="showDetail('security'); closeMobileMenu();">Security Process Illustration</a>
-                <a class="nav-link" onclick="showDetail('product'); closeMobileMenu();">Product How It Works</a>
+                <h2 class="nav-title" onclick="showCategory('graphic')">Graphic Design</h2>
+                <a class="nav-link" onclick="showDetail('bottle')">Bottle Branding</a>
+                <a class="nav-link" onclick="showDetail('security')">Security Process Illustration</a>
+                <a class="nav-link" onclick="showDetail('product')">Product How It Works</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('installation'); closeMobileMenu();">Installation Art</h2>
-                <a class="nav-link" onclick="showDetail('european'); closeMobileMenu();">European Capital of Culture Elevsis</a>
-                <a class="nav-link" onclick="showDetail('sue'); closeMobileMenu();">Sue By The Sea</a>
-                <a class="nav-link" onclick="showDetail('vr'); closeMobileMenu();">Virtual Reality</a>
+                <h2 class="nav-title" onclick="showCategory('installation')">Installation Art</h2>
+                <a class="nav-link" onclick="showDetail('european')">European Capital of Culture Elevsis</a>
+                <a class="nav-link" onclick="showDetail('sue')">Sue By The Sea</a>
+                <a class="nav-link" onclick="showDetail('vr')">Virtual Reality</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('photography'); closeMobileMenu();">Photography</h2>
-                <a class="nav-link" onclick="showDetail('fanzine'); closeMobileMenu();">Fanzine Design</a>
-                <a class="nav-link" onclick="showDetail('analogue'); closeMobileMenu();">Analogue</a>
-                <a class="nav-link" onclick="showDetail('digital'); closeMobileMenu();">Digital</a>
+                <h2 class="nav-title" onclick="showCategory('photography')">Photography</h2>
+                <a class="nav-link" onclick="showDetail('fanzine')">Fanzine Design</a>
+                <a class="nav-link" onclick="showDetail('analogue')">Analogue</a>
+                <a class="nav-link" onclick="showDetail('digital')">Digital</a>
             </nav>
 
             <nav class="nav-section">
@@ -451,40 +332,23 @@
         <main class="main-content">
             <!-- Home Page with Sections -->
             <div id="home" class="page active">
-                <!-- About Section -->
-                <section class="about-section">
-                    <h2 class="about-title">Creative Director & Filmmaker</h2>
-                    <p class="about-text">
-                        Based in Luxembourg, I craft visual stories across film, design, and immersive experiences. 
-                        With a multidisciplinary approach spanning short films, corporate productions, UX design, and installation art, 
-                        I explore the intersection of technology, narrative, and human experience. My work has been featured at 
-                        international film festivals and cultural exhibitions across Europe.
-                    </p>
-                </section>
-
                 <!-- Short Films Section -->
                 <section class="category-section">
-                    <div class="category-header">
-                        <h2 class="category-title">Short Films</h2>
-                        <span class="category-count">3 Projects</span>
-                    </div>
+                    <h2 class="category-title">Short Films</h2>
                     <div class="gallery">
                         <div class="gallery-item" onclick="showDetail('cruise')">
-                            <span class="project-year">2024</span>
                             <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
                             <div class="overlay">
                                 <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('acheron')">
-                            <span class="project-year">2022</span>
                             <img src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
                             <div class="overlay">
                                 <div class="overlay-text">Acheron</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('burns')">
-                            <span class="project-year">2021</span>
                             <img src="/JulesWax/Assets/WhenItBurns.jpg" alt="When It Burns">
                             <div class="overlay">
                                 <div class="overlay-text">When It Burns</div>
@@ -495,41 +359,33 @@
 
                 <!-- Corporate Section -->
                 <section class="category-section">
-                    <div class="category-header">
-                        <h2 class="category-title">Corporate</h2>
-                        <span class="category-count">5 Projects</span>
-                    </div>
+                    <h2 class="category-title">Corporate</h2>
                     <div class="gallery">
                         <div class="gallery-item" onclick="showDetail('tedx')">
-                            <span class="project-year">2021</span>
                             <img src="/JulesWax/Assets/TedX.jpg" alt="TedX">
                             <div class="overlay">
                                 <div class="overlay-text">TedX</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('motion')">
-                            <span class="project-year">2024</span>
                             <img src="/JulesWax/Assets/Motion.jpg" alt="Motion Design">
                             <div class="overlay">
                                 <div class="overlay-text">Motion Design</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('firstfloor')">
-                            <span class="project-year">2021</span>
                             <img src="/JulesWax/Assets/FirstFloor.jpg" alt="FirstFloor">
                             <div class="overlay">
                                 <div class="overlay-text">FirstFloor - Interior Design</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('smilin')">
-                            <span class="project-year">2021</span>
                             <img src="/JulesWax/Assets/SmilinGlass.jpg" alt="Smilin Glass">
                             <div class="overlay">
                                 <div class="overlay-text">Smilin' Glass</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('interviews')">
-                            <span class="project-year">2023</span>
                             <img src="/JulesWax/Assets/Interviews.png" alt="Interviews">
                             <div class="overlay">
                                 <div class="overlay-text">Interviews</div>
@@ -540,30 +396,24 @@
 
                 <!-- UX Research & Design Section -->
                 <section class="category-section">
-                    <div class="category-header">
-                        <h2 class="category-title">UX Research & Design</h2>
-                        <span class="category-count">3 Projects</span>
-                    </div>
+                    <h2 class="category-title">UX Research & Design</h2>
                     <div class="gallery">
-                        <div class="gallery-item" onclick="showDetail('ux-mobile')">
-                            <span class="project-year">2024</span>
-                            <img src="/JulesWax/Assets/UX_Mobile.png" alt="Mobile App Design">
+                        <div class="gallery-item" onclick="showDetail('user-testing')">
+                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=600&fit=crop" alt="User Testing">
                             <div class="overlay">
-                                <div class="overlay-text">Mobile App Design</div>
+                                <div class="overlay-text">User Testing</div>
                             </div>
                         </div>
-                        <div class="gallery-item" onclick="showDetail('ux-assessment')">
-                            <span class="project-year">2024</span>
-                            <img src="/JulesWax/Assets/UX_Assessment.png" alt="Assessment Platform">
+                        <div class="gallery-item" onclick="showDetail('wireframes')">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop" alt="Wireframes">
                             <div class="overlay">
-                                <div class="overlay-text">Assessment Platform</div>
+                                <div class="overlay-text">Wireframes & Prototypes</div>
                             </div>
                         </div>
-                        <div class="gallery-item" onclick="showDetail('ux-results')">
-                            <span class="project-year">2024</span>
-                            <img src="/JulesWax/Assets/UX_Results.png" alt="Results Platform">
+                        <div class="gallery-item" onclick="showDetail('case-study')">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop" alt="Case Study">
                             <div class="overlay">
-                                <div class="overlay-text">Results Platform</div>
+                                <div class="overlay-text">Case Study</div>
                             </div>
                         </div>
                     </div>
@@ -571,28 +421,22 @@
 
                 <!-- Graphic Design Section -->
                 <section class="category-section">
-                    <div class="category-header">
-                        <h2 class="category-title">Graphic Design</h2>
-                        <span class="category-count">3 Projects</span>
-                    </div>
+                    <h2 class="category-title">Graphic Design</h2>
                     <div class="gallery">
                         <div class="gallery-item" onclick="showDetail('bottle')">
-                            <span class="project-year">2023</span>
-                            <img src="/JulesWax/Assets/BottleBranding.png" alt="Bottle Branding">
+                            <img src="Assets/BottleBranding.png" alt="Bottle Branding">
                             <div class="overlay">
                                 <div class="overlay-text">Bottle Branding</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('security')">
-                            <span class="project-year">2023</span>
                             <img src="/JulesWax/Assets/Security.png" alt="Security Process">
                             <div class="overlay">
                                 <div class="overlay-text">Security Process Illustration</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('product')">
-                            <span class="project-year">2023</span>
-                            <img src="/JulesWax/Assets/Works.png" alt="Product How It Works">
+                            <img src="Assets/Works.png" alt="Product How It Works">
                             <div class="overlay">
                                 <div class="overlay-text">Product How It Works</div>
                             </div>
@@ -602,27 +446,21 @@
 
                 <!-- Installation Art Section -->
                 <section class="category-section">
-                    <div class="category-header">
-                        <h2 class="category-title">Installation Art</h2>
-                        <span class="category-count">3 Projects</span>
-                    </div>
+                    <h2 class="category-title">Installation Art</h2>
                     <div class="gallery">
                         <div class="gallery-item" onclick="showDetail('european')">
-                            <span class="project-year">2023</span>
                             <img src="/JulesWax/Assets/Symbiosis.jpg" alt="European Capital">
                             <div class="overlay">
                                 <div class="overlay-text">European Capital of Culture Elevsis</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('sue')">
-                            <span class="project-year">2020</span>
                             <img src="/JulesWax/Assets/Sue.png" alt="Sue By The Sea">
                             <div class="overlay">
                                 <div class="overlay-text">Sue By The Sea</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('vr')">
-                            <span class="project-year">2019</span>
                             <img src="/JulesWax/Assets/Vr.png" alt="Virtual Reality">
                             <div class="overlay">
                                 <div class="overlay-text">Virtual Reality</div>
@@ -633,27 +471,21 @@
 
                 <!-- Photography Section -->
                 <section class="category-section">
-                    <div class="category-header">
-                        <h2 class="category-title">Photography</h2>
-                        <span class="category-count">3 Projects</span>
-                    </div>
+                    <h2 class="category-title">Photography</h2>
                     <div class="gallery">
                         <div class="gallery-item" onclick="showDetail('fanzine')">
-                            <span class="project-year">2022</span>
                             <img src="/JulesWax/Assets/Fanzine.png" alt="Fanzine">
                             <div class="overlay">
                                 <div class="overlay-text">Fanzine Design</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('analogue')">
-                            <span class="project-year">2021</span>
                             <img src="/JulesWax/Assets/Analogue.png" alt="Analogue">
                             <div class="overlay">
                                 <div class="overlay-text">Analogue</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('digital')">
-                            <span class="project-year">2023</span>
                             <img src="/JulesWax/Assets/Digital.jpg" alt="Digital">
                             <div class="overlay">
                                 <div class="overlay-text">Digital</div>
@@ -667,21 +499,18 @@
             <div id="short-films" class="page">
                 <div class="gallery">
                     <div class="gallery-item" onclick="showDetail('cruise')">
-                        <span class="project-year">2024</span>
                         <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
                         <div class="overlay">
                             <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
                         </div>
                     </div>
                     <div class="gallery-item" onclick="showDetail('acheron')">
-                        <span class="project-year">2022</span>
                         <img src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
                         <div class="overlay">
                             <div class="overlay-text">Acheron</div>
                         </div>
                     </div>
                     <div class="gallery-item wide" onclick="showDetail('burns')">
-                        <span class="project-year">2021</span>
                         <img src="/JulesWax/Assets/WhenItBurns.jpg" alt="When It Burns">
                         <div class="overlay">
                             <div class="overlay-text">When It Burns</div>
@@ -777,11 +606,400 @@
             <!-- UX Research & Design Category Page -->
             <div id="ux-research" class="page">
                 <div class="gallery">
-                    <div class="gallery-item" onclick="showDetail('ux-mobile')">
-                        <img src="/JulesWax/Assets/UX_Mobile.png" alt="Mobile App Design">
+                    <div class="gallery-item" onclick="showDetail('user-testing')">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=600&fit=crop" alt="User Testing">
                         <div class="overlay">
-                            <div class="overlay-text">Mobile App Design</div>
+                            <div class="overlay-text">User Testing</div>
                         </div>
                     </div>
-                    <div class="gallery-item" onclick="showDetail('ux-assessment')">
-                        <img src="/JulesWax/Assets/U
+                    <div class="gallery-item" onclick="showDetail('wireframes')">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop" alt="Wireframes">
+                        <div class="overlay">
+                            <div class="overlay-text">Wireframes & Prototypes</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('case-study')">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop" alt="Case Study">
+                        <div class="overlay">
+                            <div class="overlay-text">Case Study</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphic Design Category Page -->
+            <div id="graphic" class="page">
+                <div class="gallery">
+                    <div class="gallery-item" onclick="showDetail('bottle')">
+                        <img src="Assets/BottleBranding.png" alt="Bottle Branding">
+                        <div class="overlay">
+                            <div class="overlay-text">Bottle Branding</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('security')">
+                        <img src="/JulesWax/Assets/Security.png" alt="Security Process">
+                        <div class="overlay">
+                            <div class="overlay-text">Security Process Illustration</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="showDetail('product')">
+                        <img src="Assets/Works.png" alt="Product How It Works">
+                        <div class="overlay">
+                            <div class="overlay-text">Product How It Works</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Pages -->
+            <div id="detail-cruise" class="page detail-page">
+                <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Cruise Me, Cruise Me Babe</h1>
+                    <p class="detail-description"><strong>In Production</strong> 
+                        <br>
+An insomniac photographer, who, during a late-night phone call with a mysterious young woman, recalls witnessing a surreal encounter: the soul of a man dressed in a tuxedo, floating in the sky, guided through the streets of Luxembourg City by an angel.</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/1075270341" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me scene 1">
+                    </a>
+                    <a href="/JulesWax/Assets/AfficheCruiseMe.png" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Moodboard.png" alt="Cruise Me scene 2">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-acheron" class="page detail-page">
+                <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Acheron</h1>
+                    <p class="detail-description">
+Marie is unable to escape a space-time loop after experiencing an accident. In order to break free, she must confront her innermost demons and come to terms with a traumatizing new reality.
+<br><br>
+Official Selection LuxFilmFest,
+FilmFestival Max Ophuls Preis,
+International Usak Short films
+Festival
+Festival Turkey Shorts
+<br>
+Production: CNA, FilmFund
+<br>
+Duration: 15min
+</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/700356005" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
+                    </a>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/700356005" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Acheron2.jpg" alt="Acheron2">
+                    </a>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/700356005" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Acheron3.jpg" alt="Acheron3">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-burns" class="page detail-page">
+                <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">When It Burns</h1>
+                    <p class="detail-description">
+Official Selection INDIE SHORT AWARDS Buenos Aires.
+<br>
+Official selection Experimental Film Competition organised by Director Nicolas Winding Refn (Pusher Trilogy, Drive, Only God Forgives).</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/600314397" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/WhenItBurns.jpg" alt="When It Burns poster">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-tedx" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">TedX</h1>
+                    <p class="detail-description">
+International School of Luxembourg
+<br>
+Directed and edited by Alexis Vandeweerd & Jules Wax
+<br>
+Production of the event, a Teaser, and a Making-Of
+</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/613517647" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/TedX.jpg" alt="TedX event">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-motion" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Motion Design</h1>
+                    <p class="detail-description">Dynamic motion graphics and animation projects for corporate clients.</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/1098530188" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Motion.jpg" alt="Motion Design">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-firstfloor" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">FirstFloor - Interior Design</h1>
+                    <p class="detail-description">Visual content creation for an interior design firm, showcasing beautiful spaces and design concepts. 
+                        <br>
+Directed and edited a promotional video</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/631959129" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/FirstFloor.jpg" alt="FirstFloor project">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-smilin" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Smilin' Glass</h1>
+                    <p class="detail-description">Commercial photography and video production for Smilin' Glass brand.
+                        <br>
+                        Directed and edited Promotional Instagram Snippets for a glass artist.
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/595793388" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/SmilinGlass.jpg" alt="Smilin Glass">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-interviews" class="page detail-page">
+                <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Interviews</h1>
+                    <p class="detail-description">Professional interview series capturing compelling stories and conversations.
+                        <br>
+                        Prepared, shot, edited client interviews, a workshop, and a promotional video
+                    </p>
+                </div>
+                <div class="detail-content">
+                        <img class="detail-image" src="/JulesWax/Assets/Interviews.png" alt="Interview">
+                </div>
+            </div>
+            <!-- Installation Art Detail Pages -->
+            <div id="detail-european" class="page detail-page">
+                <button class="back-button" onclick="showCategory('installation')">← Back to Installation Art</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">European Capital of Culture Elevsis</h1>
+                    <p class="detail-description">Large-scale installation art project celebrating cultural heritage and contemporary artistic expression.
+                        <br>
+                        European Capital Of Culture2023, Eleusis, Grece
+   <br>
+Architectural and Interior design Conceptualisation: Judy Rodriguez
+   <br>
+Directed and edited by Jules Wax
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://vimeo.com/551406902" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Symbiosis.jpg" alt="European Capital project">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-sue" class="page detail-page">
+                <button class="back-button" onclick="showCategory('installation')">← Back to Installation Art</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Sue By The Sea</h1>
+                    <p class="detail-description">An immersive installation exploring the relationship between urban environments and water.</p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://www.youtube.com/watch?v=ncAj8gWMjL8" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Sue.png" alt="Sue By The Sea">
+                    </a>
+                </div>
+            </div>
+
+            <div id="detail-vr" class="page detail-page">
+                <button class="back-button" onclick="showCategory('installation')">← Back to Installation Art</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Virtual Reality</h1>
+                    <p class="detail-description">Immersive VR experiences pushing the boundaries of interactive art.
+                        <br>
+Looping 8min sequence video
+ <br>
+Directed and edited by Jules Wax & Alexis Vandeweerd
+ <br>
+Projected at Galerie 39, Dudelange, Luxembourg
+
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <a href="https://www.youtube.com/watch?v=nTWIaC6965I" target="_blank">
+                        <img class="detail-image" src="/JulesWax/Assets/Vr.jpg" alt="VR project">
+                    </a>
+                </div>
+            </div>
+
+
+
+            <!-- Photography Detail Pages -->
+            <div id="detail-fanzine" class="page detail-page">
+                <button class="back-button" onclick="showCategory('photography')">← Back to Photography</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Fanzine Design</h1>
+                    <p class="detail-description">Editorial photography and layout design for independent publications.
+                        <br>
+                        Double Japanese Binding 120g/m recycled paper Inkjet Printing.
+ <br>
+Reflecting on spatiality and our relationship to natural forces in Lanzarote Island.
+ <br>
+The island of Lanzarote generates feelings of familiarity, detachment, and isolation as if on another planet.
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="/JulesWax/Assets/Fanzine.png" alt="Fanzine">
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="/JulesWax/Assets/Fanzine2.png" alt="Fanzine">
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="/JulesWax/Assets/Fanzine3.png" alt="Fanzine">
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="/JulesWax/Assets/Fanzine4.png" alt="Fanzine">
+                </div>
+            </div>
+
+            <div id="detail-analogue" class="page detail-page">
+                <button class="back-button" onclick="showCategory('photography')">← Back to Photography</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Analogue</h1>
+                    <p class="detail-description">Film photography exploring texture, grain, and the beauty of analogue processes. 
+                        <br>
+
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="/JulesWax/Assets/Analogue.png" alt="Analogue photography">
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="/JulesWax/Assets/Analogue2.png" alt="Analogue photography">
+                </div>
+            </div>
+
+            <div id="detail-digital" class="page detail-page">
+                <button class="back-button" onclick="showCategory('photography')">← Back to Photography</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Digital</h1>
+                    <p class="detail-description">Contemporary digital photography capturing our deep and mystic relationship to nature's unsettling greatness.</p>
+                </div>
+                <div class="detail-content">
+                    <img class="/JulesWax/Assets/Digital.jpg" alt="Digital photography">
+                </div>
+                <div class="detail-content">
+                    <img class="/JulesWax/Assets/Digital2.jpg" alt="Digital photography">
+                </div>
+            </div>
+
+            <!-- UX Research & Design Detail Pages -->
+<div id="detail-user-testing" class="page detail-page">
+    <button class="back-button" onclick="showCategory('ux-research')">← Back to UX Research & Design</button>
+    <div class="detail-header">
+        <h1 class="detail-title">User Testing</h1>
+        <p class="detail-description">Comprehensive user testing and research projects to inform design decisions.</p>
+    </div>
+    <div class="detail-header">
+        <h1 class="detail-title">Wireframes & Prototypes</h1>
+        <p class="detail-description">Interactive prototypes and wireframes for digital products and services.</p>
+    </div>
+    <div class="detail-header">
+        <h1 class="detail-title">Case Study</h1>
+        <p class="detail-description">In-depth UX case studies documenting the design process from research to implementation.</p>
+    </div>
+    <div class="detail-content">
+        <img class="detail-image" src="Assets/UX.png" alt="User Testing">
+    </div>
+</div>
+
+            <!-- Graphic Design Detail Pages -->
+            <div id="detail-bottle"
+class="page detail-page">
+                <button class="back-button" onclick="showCategory('graphic')">← Back to Graphic Design</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Bottle Branding</h1>
+                    <p class="detail-description">Brand identity and packaging design for bottle products.
+                        <br>
+Bottle Branding Goodies for a private event with clients & Investors
+<br>
+Reinvestigating Luxembourg's natural, Cultural and Modern landscapes
+                    </p>
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="Assets/BottleBranding.png" alt="Bottle Branding">
+                </div>
+                <div class="detail-content">
+                    <img class="detail-image" src="Assets/BottleBranding2.png" alt="Bottle Branding">
+                </div>
+            </div>
+
+            <div id="detail-security" class="page detail-page">
+                <button class="back-button" onclick="showCategory('graphic')">← Back to Graphic Design</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Security Process Illustration</h1>
+                    <p class="detail-description">Technical illustrations for security processes and workflows.</p>
+                </div>
+                <div class="detail-content">
+                    <img class="/JulesWax/Assets/Security.png" alt="Security Process">
+                </div>
+                <div class="detail-content">
+                    <img class="/JulesWax/Assets/Security2.png" alt="Security Process">
+                </div>
+            </div>
+
+            <div id="detail-product" class="page detail-page">
+                <button class="back-button" onclick="showCategory('graphic')">← Back to Graphic Design</button>
+                <div class="detail-header">
+                    <h1 class="detail-title">Product How It Works</h1>
+                    <p class="detail-description">Visual explanations of product features and functionality.</p>
+                </div>
+                <div class="detail-content">
+                    <img class="Assets/Works.png" alt="Product How It Works">
+                </div>
+            </div>
+        </main>
+    </div>
+            <script>
+    function showHome() {
+        hideAllPages();
+        document.getElementById('home').classList.add('active');
+    }
+
+    function showCategory(categoryId) {
+        hideAllPages();
+        document.getElementById(categoryId).classList.add('active');
+    }
+
+    function showDetail(detailId) {
+        hideAllPages();
+        document.getElementById('detail-' + detailId).classList.add('active');
+    }
+
+    function hideAllPages() {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+    }
+    </script>
+</body>
+</html>
