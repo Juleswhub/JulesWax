@@ -205,13 +205,12 @@
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
     width: 100%;
-    max-width: 1200px; /* Add this to prevent the grid from stretching too wide */
+    max-width: 1200px;
     margin: 0 auto;
 }
-
 
 .gallery-item {
     position: relative;
@@ -225,7 +224,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto; /* Ensure height is not fixed */
+    height: 300px; /* Fixed height for consistency */
 }
 
 .gallery-item img {
@@ -380,8 +379,28 @@
     margin-bottom: 20px;
 }
 
-@media (max-width: 768px) {
-    .about-page-section {
+        /* Responsive Design */
+       @media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    .gallery-item {
+        height: 250px; /* Adjust height for mobile */
+
+         .about-page-section {
         flex-direction: column;
     }
     
@@ -389,29 +408,19 @@
         width: 100%;
         height: 300px;
     }
+    }
+}
 
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
 
             .main-content {
     margin-left: 280px;
     flex: 1;
-    padding: 60px 80px;
+    padding: 40px;
     animation: fadeIn 0.5s ease;
-    overflow: hidden;
+    max-width: 1400px; /* Add this to prevent the content from stretching too wide */
+    margin: 0 auto; /* Center the content */
 }
+
 
             .about-section {
                 padding: 40px 30px;
