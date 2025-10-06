@@ -238,6 +238,11 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+.gallery-item.active .overlay {
+    opacity: 1;
+}
+
+        
 .overlay {
     position: absolute;
     top: 0;
@@ -581,19 +586,19 @@
                     </div>
                     <div class="gallery">
                        <div class="gallery-item" onclick="showDetail('ux-mobile')">
-                            <img src="/JulesWax/Assets/UX_Mobile.png" alt="Mobile App Design">
+                            <img src="/JulesWax/Assets/UX.png" alt="Mobile App Design">
                             <div class="overlay">
                                 <div class="overlay-text">Mobile App Design</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('ux-assessment')">
-                            <img src="/JulesWax/Assets/UX_Assessment.png" alt="Assessment Platform">
+                            <img src="/JulesWax/Assets/UX2.png" alt="Assessment Platform">
                             <div class="overlay">
                                 <div class="overlay-text">Assessment Platform</div>
                             </div>
                         </div>
                         <div class="gallery-item" onclick="showDetail('ux-results')">
-                            <img src="/JulesWax/Assets/UX_Results.png" alt="Results Platform">
+                            <img src="/JulesWax/Assets/UX3.png" alt="Results Platform">
                             <div class="overlay">
                                 <div class="overlay-text">Results Platform</div>
                             </div>
@@ -793,6 +798,7 @@
 </div>
                 </div>
             </div>
+     </div>
 
             <!-- Graphic Design Category Page -->
             <div id="graphic" class="page">
@@ -1252,6 +1258,14 @@ function closeMobileMenu() {
     }, 100);
     closeMobileMenu();
 }
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.classList.toggle('active');
+    });
+});
+
 
 
     </script>
