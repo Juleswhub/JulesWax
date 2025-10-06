@@ -318,27 +318,19 @@
        .detail-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 40px; /* Only horizontal padding */
     width: 100%;
 }
-
-.detail-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-
 
 .detail-header {
     margin-bottom: 30px;
-    padding-top: 0px;  /* Change this to: padding-top: 0; */
+    padding-top: 0;
 }
 
 .back-button {
     display: inline-block;
+    margin-top: 0;
+    margin-bottom: 30px;
     padding: 10px 24px;
     background-color: transparent;
     color: #1a1a1a;
@@ -348,11 +340,24 @@
     transition: opacity 0.3s ease;
     cursor: pointer;
     border: 1px solid #1a1a1a;
-    margin-bottom: 30px;
     border-radius: 0;
     letter-spacing: 1px;
 }
 
+.detail-page h1,
+.detail-page h2,
+.detail-page h3,
+.detail-page p {
+    margin-top: 0;
+}
+
+.detail-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
 
 .detail-title {
     font-size: 36px;
