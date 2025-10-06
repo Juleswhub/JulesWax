@@ -504,13 +504,13 @@
             <h2 class="category-title">Short Films</h2>
             <span class="category-count">3 Projects</span>
         </div>
-        <div class="gallery">
-            <div class="gallery-item" onclick="showDetail('cruise')">
-                <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
-                <div class="overlay">
-                    <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
-                </div>
-            </div>
+       <div class="gallery-item" onclick="showDetail('cruise')">
+    <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
+    <div class="overlay">
+        <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
+    </div>
+</div>
+
             <div class="gallery-item" onclick="showDetail('acheron')">
                 <img src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
                 <div class="overlay">
@@ -1259,12 +1259,18 @@ function closeMobileMenu() {
 }
 
         function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Show the home page
+    showHome();
+    // Scroll to the section after a small delay to ensure the page is visible
+    setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 100);
     closeMobileMenu();
 }
+
 
     </script>
 </body>
