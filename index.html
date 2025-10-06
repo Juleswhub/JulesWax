@@ -262,19 +262,6 @@
     letter-spacing: 0.5px;
 }
 
-.project-year {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: rgba(255,255,255,0.9);
-    padding: 4px 12px;
-    font-size: 11px;
-    font-weight: 400;
-    border-radius: 2px;
-    z-index: 10;
-    letter-spacing: 1px;
-}
-
         /* Detail Page */
         .detail-page {
     max-width: 1000px;
@@ -448,10 +435,12 @@
 
             <nav class="nav-section">
                 <h2 class="nav-title" onclick="showCategory('short-films'); closeMobileMenu();">Short Films</h2>
-                <a class="nav-link" onclick="showDetail('cruise'); closeMobileMenu();">Cruise Me, Cruise Me Babe</a>
+<a class="nav-link" onclick="showDetail('cruise'); closeMobileMenu();">Cruise Me, Cruise Me Babe</a>
+
                 <a class="nav-link" onclick="showDetail('acheron'); closeMobileMenu();">Acheron</a>
                 <a class="nav-link" onclick="showDetail('burns'); closeMobileMenu();">When It Burns</a>
             </nav>
+
 
             <nav class="nav-section">
                 <h2 class="nav-title" onclick="showCategory('corporate'); closeMobileMenu();">Corporate</h2>
@@ -504,19 +493,31 @@
         <main class="main-content">
             <!-- Home Page with Sections -->
             <div id="home" class="page active">
+    <section class="category-section">
+        <div class="category-header">
+            <h2 class="category-title">Short Films</h2>
+            <span class="category-count">3 Projects</span>
+        </div>
+        <div class="gallery">
+            <div class="gallery-item" onclick="showDetail('cruise')">
+                <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
+                <div class="overlay">
+                    <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
+                </div>
+            </div>
                 
 
                 <!-- About Page -->
 </div>
 
             <!-- About Page -->
-            <div id="about" class="page">
-                <div class="about-page-section">
-                    <div class="about-photo">
-                        <img src="/JulesWax/Assets/JulesWax.jpeg" alt="Jules Wax">
-                    </div>
-                    <div class="about-text-content">
-                        <h2>About Jules Wax</h2>
+          <div id="about" class="page">
+    <div class="about-page-section">
+        <div class="about-photo">
+            <img src="/JulesWax/Assets/JulesWax.jpeg" alt="Jules Wax">
+        </div>
+        <div class="about-text-content">
+            <h2>About Jules Wax</h2>
                         <p>
                             Based in Luxembourg, I craft visual stories across film, design, and immersive experiences. 
                             With a multidisciplinary approach spanning short films, corporate productions, UX design, and installation art, 
