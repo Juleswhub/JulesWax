@@ -118,6 +118,11 @@
     color: #1a1a1a;
     font-weight: 400;
 }
+
+        html {
+    scroll-behavior: smooth;
+}
+        
         /* Main Content Area */
         .main-content {
     margin-left: 280px;
@@ -434,7 +439,7 @@
             <h1 class="logo" onclick="showHome(); closeMobileMenu();">JULES WAX</h1>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('short-films'); closeMobileMenu();">Short Films</h2>
+                <h2 class="nav-title" onclick="scrollToSection('short-films-section');">Short Films</h2>
 <a class="nav-link" onclick="showDetail('cruise'); closeMobileMenu();">Cruise Me, Cruise Me Babe</a>
 
                 <a class="nav-link" onclick="showDetail('acheron'); closeMobileMenu();">Acheron</a>
@@ -443,7 +448,7 @@
 
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('corporate'); closeMobileMenu();">Corporate</h2>
+                <h2 class="nav-title" onclick="scrollToSection('corporate-section');">Corporate</h2>
                 <a class="nav-link" onclick="showDetail('tedx'); closeMobileMenu();">TedX</a>
                 <a class="nav-link" onclick="showDetail('motion'); closeMobileMenu();">Motion Design</a>
                 <a class="nav-link" onclick="showDetail('firstfloor'); closeMobileMenu();">FirstFloor - Interior Design</a>
@@ -452,28 +457,28 @@
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('ux-research'); closeMobileMenu();">UX Research & Design</h2>
+                <h2 class="nav-title" onclick="scrollToSection('ux-research');">UX Research & Design</h2>
                 <a class="nav-link" onclick="showDetail('ux-mobile'); closeMobileMenu();">Mobile App Design</a>
                 <a class="nav-link" onclick="showDetail('ux-assessment'); closeMobileMenu();">Assessment Platform</a>
                 <a class="nav-link" onclick="showDetail('ux-results'); closeMobileMenu();">Results Platform</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('graphic'); closeMobileMenu();">Graphic Design</h2>
+                <h2 class="nav-title" onclick="scrollToSection('graphic');">Graphic Design</h2>
                 <a class="nav-link" onclick="showDetail('bottle'); closeMobileMenu();">Bottle Branding</a>
                 <a class="nav-link" onclick="showDetail('security'); closeMobileMenu();">Security Process Illustration</a>
                 <a class="nav-link" onclick="showDetail('product'); closeMobileMenu();">Product How It Works</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('installation'); closeMobileMenu();">Installation Art</h2>
+                <h2 class="nav-title" onclick="scrollToSection('installation');">Installation Art</h2>
                 <a class="nav-link" onclick="showDetail('european'); closeMobileMenu();">European Capital of Culture Elevsis</a>
                 <a class="nav-link" onclick="showDetail('sue'); closeMobileMenu();">Sue By The Sea</a>
                 <a class="nav-link" onclick="showDetail('vr'); closeMobileMenu();">Virtual Reality</a>
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="showCategory('photography'); closeMobileMenu();">Photography</h2>
+                <h2 class="nav-title" onclick="scrollToSection('photography');">Photography</h2>
                 <a class="nav-link" onclick="showDetail('fanzine'); closeMobileMenu();">Fanzine Design</a>
                 <a class="nav-link" onclick="showDetail('analogue'); closeMobileMenu();">Analogue</a>
                 <a class="nav-link" onclick="showDetail('digital'); closeMobileMenu();">Digital</a>
@@ -494,7 +499,7 @@
             <!-- Home Page with Sections -->
             <div id="home" class="page active">
     <!-- Short Films Section -->
-    <section class="category-section">
+    <section id="short-films-section" class="category-section">
         <div class="category-header">
             <h2 class="category-title">Short Films</h2>
             <span class="category-count">3 Projects</span>
@@ -554,7 +559,7 @@
             </div>
 
                 <!-- Corporate Section -->
-                <section class="category-section">
+                <section id="corporate-section" class="category-section">
                     <div class="category-header">
                         <h2 class="category-title">Corporate</h2>
                         <span class="category-count">5 Projects</span>
@@ -594,7 +599,7 @@
                 </section>
 
                 <!-- UX Research & Design Section -->
-                <section class="category-section">
+                <section id="UX-section" class="category-section">
                     <div class="category-header">
                         <h2 class="category-title">UX Research & Design</h2>
                         <span class="category-count">3 Projects</span>
@@ -621,7 +626,7 @@
                 </section>
 
                 <!-- Graphic Design Section -->
-                <section class="category-section">
+                <section id="Graphic-section" class="category-section">
                     <div class="category-header">
                         <h2 class="category-title">Graphic Design</h2>
                         <span class="category-count">3 Projects</span>
@@ -649,7 +654,7 @@
                 </section>
 
                 <!-- Installation Art Section -->
-                <section class="category-section">
+                <section id="installation-section" class="category-section">
                     <div class="category-header">
                         <h2 class="category-title">Installation Art</h2>
                         <span class="category-count">3 Projects</span>
@@ -677,7 +682,7 @@
                 </section>
 
                 <!-- Photography Section -->
-                <section class="category-section">
+                <section id="photography-section" class="category-section">
                     <div class="category-header">
                         <h2 class="category-title">Photography</h2>
                         <span class="category-count">3 Projects</span>
@@ -1252,6 +1257,15 @@ function toggleMobileMenu() {
 function closeMobileMenu() {
     document.getElementById('sidebar').classList.remove('open');
 }
+
+        function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+    closeMobileMenu();
+}
+
     </script>
 </body>
 </html>
