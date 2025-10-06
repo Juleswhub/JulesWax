@@ -413,6 +413,16 @@
     margin-bottom: 20px;
 }
 
+        /* Remove extra space above detail pages */
+.main-content .detail-page {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.main-content .detail-page > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
         /* Responsive Design */
       @media (max-width: 768px) {
     .mobile-menu-toggle {
@@ -452,16 +462,6 @@
         margin: 0 auto;
         padding-bottom: 20px;
     }
-          /* Remove extra space above detail pages */
-.main-content .detail-page {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-}
-
-.main-content .detail-page > *:first-child {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
 
 }
     </style>
