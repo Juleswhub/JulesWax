@@ -463,33 +463,32 @@
             </nav>
 
             <nav class="nav-section">
-                <h2 class="nav-title" onclick="scrollToSection('ux-research');">UX Research & Design</h2>
-                <a class="nav-link" onclick="showDetail('ux-mobile'); closeMobileMenu();">Mobile App Design</a>
-                <a class="nav-link" onclick="showDetail('ux-assessment'); closeMobileMenu();">Assessment Platform</a>
-                <a class="nav-link" onclick="showDetail('ux-results'); closeMobileMenu();">Results Platform</a>
-            </nav>
+    <h2 class="nav-title" onclick="scrollToSection('ux-research-section');">UX Research & Design</h2>
+    <a class="nav-link" onclick="showDetail('ux-mobile'); closeMobileMenu();">Mobile App Design</a>
+    <a class="nav-link" onclick="showDetail('ux-assessment'); closeMobileMenu();">Assessment Platform</a>
+    <a class="nav-link" onclick="showDetail('ux-results'); closeMobileMenu();">Results Platform</a>
+</nav>
 
-            <nav class="nav-section">
-                <h2 class="nav-title" onclick="scrollToSection('graphic');">Graphic Design</h2>
-                <a class="nav-link" onclick="showDetail('bottle'); closeMobileMenu();">Bottle Branding</a>
-                <a class="nav-link" onclick="showDetail('security'); closeMobileMenu();">Security Process Illustration</a>
-                <a class="nav-link" onclick="showDetail('product'); closeMobileMenu();">Product How It Works</a>
-            </nav>
+<nav class="nav-section">
+    <h2 class="nav-title" onclick="scrollToSection('graphic-section');">Graphic Design</h2>
+    <a class="nav-link" onclick="showDetail('bottle'); closeMobileMenu();">Bottle Branding</a>
+    <a class="nav-link" onclick="showDetail('security'); closeMobileMenu();">Security Process Illustration</a>
+    <a class="nav-link" onclick="showDetail('product'); closeMobileMenu();">Product How It Works</a>
+</nav>
 
-            <nav class="nav-section">
-                <h2 class="nav-title" onclick="scrollToSection('installation');">Installation Art</h2>
-                <a class="nav-link" onclick="showDetail('european'); closeMobileMenu();">European Capital of Culture Elevsis</a>
-                <a class="nav-link" onclick="showDetail('sue'); closeMobileMenu();">Sue By The Sea</a>
-                <a class="nav-link" onclick="showDetail('vr'); closeMobileMenu();">Virtual Reality</a>
-            </nav>
+<nav class="nav-section">
+    <h2 class="nav-title" onclick="scrollToSection('installation-section');">Installation Art</h2>
+    <a class="nav-link" onclick="showDetail('european'); closeMobileMenu();">European Capital of Culture Elevsis</a>
+    <a class="nav-link" onclick="showDetail('sue'); closeMobileMenu();">Sue By The Sea</a>
+    <a class="nav-link" onclick="showDetail('vr'); closeMobileMenu();">Virtual Reality</a>
+</nav>
 
-            <nav class="nav-section">
-                <h2 class="nav-title" onclick="scrollToSection('photography');">Photography</h2>
-                <a class="nav-link" onclick="showDetail('fanzine'); closeMobileMenu();">Fanzine Design</a>
-                <a class="nav-link" onclick="showDetail('analogue'); closeMobileMenu();">Analogue</a>
-                <a class="nav-link" onclick="showDetail('digital'); closeMobileMenu();">Digital</a>
-            </nav>
-
+<nav class="nav-section">
+    <h2 class="nav-title" onclick="scrollToSection('photography-section');">Photography</h2>
+    <a class="nav-link" onclick="showDetail('fanzine'); closeMobileMenu();">Fanzine Design</a>
+    <a class="nav-link" onclick="showDetail('analogue'); closeMobileMenu();">Analogue</a>
+    <a class="nav-link" onclick="showDetail('digital'); closeMobileMenu();">Digital</a>
+</nav>
             <nav class="nav-section">
     <h2 class="nav-title" onclick="showPage('about'); closeMobileMenu();">About</h2>
 </nav>
@@ -717,28 +716,32 @@
             </div>
 
             <!-- Short Films Category Page -->
-            <div id="short-films" class="page">
-                <div class="gallery">
-                    <div class="gallery-item" onclick="showDetail('cruise')">
-                        <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
-                        <div class="overlay">
-                            <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="showDetail('acheron')">
-                        <img src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
-                        <div class="overlay">
-                            <div class="overlay-text">Acheron</div>
-                        </div>
-                    </div>
-                    <div class="gallery-item wide" onclick="showDetail('burns')">
-                        <img src="/JulesWax/Assets/WhenItBurns.jpg" alt="When It Burns">
-                        <div class="overlay">
-                            <div class="overlay-text">When It Burns</div>
-                        </div>
-                    </div>
-                </div>
+            <section id="short-films-section" class="category-section">
+    <div class="category-header">
+        <h2 class="category-title">Short Films</h2>
+        <span class="category-count">3 Projects</span>
+    </div>
+    <div class="gallery">
+        <div class="gallery-item" onclick="showDetail('cruise')">
+            <img src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me">
+            <div class="overlay">
+                <div class="overlay-text">Cruise Me, Cruise Me Babe</div>
             </div>
+        </div>
+        <div class="gallery-item" onclick="showDetail('acheron')">
+            <img src="/JulesWax/Assets/Acheron.jpg" alt="Acheron">
+            <div class="overlay">
+                <div class="overlay-text">Acheron</div>
+            </div>
+        </div>
+        <div class="gallery-item" onclick="showDetail('burns')">
+            <img src="/JulesWax/Assets/WhenItBurns.jpg" alt="When It Burns">
+            <div class="overlay">
+                <div class="overlay-text">When It Burns</div>
+            </div>
+        </div>
+    </div>
+</section>
 
             <!-- Corporate Category Page -->
             <div id="corporate" class="page">
