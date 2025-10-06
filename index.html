@@ -143,13 +143,13 @@
         }
 
         .page {
-            display: none;
-        }
+    display: none;
+}
+.page.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
 
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
 
         /* About Section */
         .about-section {
@@ -493,6 +493,7 @@
     <h2 class="nav-title" onclick="showPage('about'); closeMobileMenu();">About</h2>
 </nav>
 
+
             <nav class="nav-section">
                 <h2 class="nav-title">Contact</h2>
                 <a href="mailto:contact@juleswax.com" class="nav-link">Get in Touch</a>
@@ -684,35 +685,6 @@
                 </section>
             </div>
 </div>
-
-    <!-- About Page -->
-          <div id="about" class="page">
-    <div class="about-page-section">
-        <div class="about-photo">
-            <img src="/JulesWax/Assets/JulesWax.jpeg" alt="Jules Wax">
-        </div>
-        <div class="about-text-content">
-            <h2>About Jules Wax</h2>
-                        <p>
-                            Based in Luxembourg, I craft visual stories across film, design, and immersive experiences. 
-                            With a multidisciplinary approach spanning short films, corporate productions, UX design, and installation art, 
-                            I explore the intersection of technology, narrative, and human experience.
-                        </p>
-                        <p>
-                            My work has been featured at international film festivals including LuxFilmFest, FilmFestival Max Ophuls Preis, 
-                            and the INDIE SHORT AWARDS Buenos Aires. I've also contributed to cultural exhibitions across Europe, including the European Capital of Culture 2023 in Eleusis, Greece.
-                        </p>
-                        <p>
-                            Beyond filmmaking, I've contributed to large-scale cultural projects and work extensively in the corporate sector, creating motion design, promotional videos, and documentary-style content for various clients.
-                        </p>
-                        <p>
-                            I approach each project with curiosity and attention to detail, whether directing short films, 
-                            designing user experiences, or creating immersive installations. My goal is to create work that 
-                            resonates emotionally while pushing creative boundaries.
-                        </p>
-                    </div>
-                </div>
-            </div>
     
             <!-- Corporate Category Page -->
             <div id="corporate" class="page">
@@ -1196,6 +1168,36 @@ Reinvestigating Luxembourg's natural, Cultural and Modern landscapes
                     <img class="detail-image" src="/JulesWax/Assets/Works.png" alt="Product How It Works">
                 </div>
             </div>
+
+    <!-- About Page -->
+          <div id="about" class="page">
+    <div class="about-page-section">
+        <div class="about-photo">
+            <img src="/JulesWax/Assets/JulesWax.jpeg" alt="Jules Wax">
+        </div>
+        <div class="about-text-content">
+            <h2>About Jules Wax</h2>
+                        <p>
+                            Based in Luxembourg, I craft visual stories across film, design, and immersive experiences. 
+                            With a multidisciplinary approach spanning short films, corporate productions, UX design, and installation art, 
+                            I explore the intersection of technology, narrative, and human experience.
+                        </p>
+                        <p>
+                            My work has been featured at international film festivals including LuxFilmFest, FilmFestival Max Ophuls Preis, 
+                            and the INDIE SHORT AWARDS Buenos Aires. I've also contributed to cultural exhibitions across Europe, including the European Capital of Culture 2023 in Eleusis, Greece.
+                        </p>
+                        <p>
+                            Beyond filmmaking, I've contributed to large-scale cultural projects and work extensively in the corporate sector, creating motion design, promotional videos, and documentary-style content for various clients.
+                        </p>
+                        <p>
+                            I approach each project with curiosity and attention to detail, whether directing short films, 
+                            designing user experiences, or creating immersive installations. My goal is to create work that 
+                            resonates emotionally while pushing creative boundaries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
         </main>
     </div>
 
