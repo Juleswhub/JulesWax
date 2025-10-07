@@ -231,13 +231,12 @@
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
-
 
 .gallery-item {
     position: relative;
@@ -246,23 +245,19 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
-    aspect-ratio: 1 / 1; /* Adjust aspect ratio if needed */
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto;
-    min-height: 300px; /* Use min-height instead of fixed height */
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
-    background-color: #fafafa;
 }
-
 .detail-image {
     width: 100%;
     height: auto;
@@ -428,6 +423,18 @@
     line-height: 1.8;
     color: #666;
     margin-bottom: 20px;
+}
+
+        @media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
     </style>
@@ -1208,12 +1215,25 @@ function showHome() {
 
 function showCategory(categoryId) {
     hideAllPages();
-    const categoryPage = document.getElementById(categoryId);
-    if (categoryPage) {
-        categoryPage.classList.add('active');
-    } else {
-        document.getElementById('home').classList.add('active');
-    }
+    // Map category names to section IDs on the home page
+    const sectionMap = {
+        'short-films': 'short-films-section',
+        'corporate': 'corporate-section',
+        'installation': 'installation-section',
+        'photography': 'photography-section',
+        'ux-research': 'ux-research-section',
+        'graphic': 'graphic-section'
+    };
+    
+    // Show home page and scroll to section
+    document.getElementById('home').classList.add('active');
+    setTimeout(() => {
+        const sectionId = sectionMap[categoryId];
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 100);
 }
 
 function showDetail(detailId) {
