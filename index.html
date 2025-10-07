@@ -389,7 +389,7 @@
         .about-page-section {
     display: flex;
     gap: 60px;
-    align-items: flex-start;
+    align-items: flex-start; /* Changed from align-items: flex-start */
     margin-bottom: 60px;
 }
 
@@ -399,11 +399,13 @@
     background-color: #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
+    align-self: flex-start; /* Add this line */
 }
 .about-photo img {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: cover; /* Add this line */
 }
 
 .about-text-content {
