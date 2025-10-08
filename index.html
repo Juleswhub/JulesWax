@@ -338,7 +338,7 @@
 
 .back-button {
     display: inline-block;
-    margin-top: 50;
+    margin-top: 20;
     margin-bottom: 30px;
     padding: 10px 24px;
     background-color: transparent;
@@ -433,36 +433,6 @@
     line-height: 1.8;
     color: #666;
     margin-bottom: 20px;
-}
-
-        .detail-content .video-container {
-    position: relative;
-    display: inline-block;
-    max-width: 400px;
-    width: 100%;
-}
-
-.detail-content .video-container .video-button {
-    display: block;
-    margin: 0 auto 15px;
-    padding: 10px 24px;
-    background-color: transparent;
-    color: #1a1a1a;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 400;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-    border: 1px solid #1a1a1a;
-    border-radius: 0;
-    letter-spacing: 1px;
-    text-align: center;
-    width: fit-content;
-}
-
-.detail-content .video-container img {
-    width: 100%;
-    height: auto;
 }
 
         @media (max-width: 768px) {
@@ -873,15 +843,21 @@
 An insomniac photographer, who, during a late-night phone call with a mysterious young woman, recalls witnessing a surreal encounter: the soul of a man dressed in a tuxedo, floating in the sky, guided through the streets of Luxembourg City by an angel.</p>
     </div>
     <div class="detail-content">
-    <div class="video-container">
-        <a href="https://vimeo.com/1075270341" target="_blank" class="video-button">
-            Video
-        </a>
-        <a href="https://vimeo.com/1075270341" target="_blank">
-            <img class="detail-image" src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me scene 1">
+        <div style="position: relative; display: inline-block;">
+            <a href="https://vimeo.com/1075270341" target="_blank" 
+               style="display: inline-block; margin-bottom: 15px; padding: 10px 24px; background-color: transparent; color: #1a1a1a; text-decoration: none; font-size: 13px; font-weight: 400; transition: opacity 0.3s ease; cursor: pointer; border: 1px solid #1a1a1a; border-radius: 0; letter-spacing: 1px;">
+                Video
+            </a>
+            <a href="https://vimeo.com/1075270341" target="_blank">
+                <img class="detail-image" src="/JulesWax/Assets/AfficheCruiseMe.png" alt="Cruise Me scene 1">
+            </a>
+        </div>
+        <a href="/JulesWax/Assets/AfficheCruiseMe.png" target="_blank">
+            <img class="detail-image" src="/JulesWax/Assets/Moodboard.png" alt="Cruise Me scene 2">
         </a>
     </div>
 </div>
+
 <div id="detail-acheron" class="page detail-page">
     <button class="back-button" onclick="showCategory('short-films')">← Back to Short Films</button>
     <div class="detail-header">
