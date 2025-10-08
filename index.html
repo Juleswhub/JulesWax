@@ -1330,7 +1330,9 @@ function showCategory(categoryId) {
 function showDetail(detailId) {
     hideAllPages();
     document.getElementById('detail-' + detailId).classList.add('active');
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 50);
 }
 
 function showPage(pageId) {
@@ -1364,15 +1366,6 @@ function closeMobileMenu() {
     }, 100);
     closeMobileMenu();
 }
-
-        document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', function(e) {
-        e.preventDefault();
-        this.classList.toggle('active');
-    });
-});
-
-
 
     </script>
 </body>
