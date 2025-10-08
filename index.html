@@ -1282,27 +1282,34 @@ Reinvestigating Luxembourg's natural, Cultural and Modern landscapes
                     </div>
                 </div>
             </div>
-    
+    <div id="detail-interviews" class="page detail-page">
+    <button class="back-button" onclick="showCategory('corporate')">← Back to Corporate</button>
+    <div class="detail-header">
+        <h1 class="detail-title">Interviews</h1>
+        <p class="detail-description">Documentary-style interviews and testimonial content.</p>
+    </div>
+    <div class="detail-content">
+        <img class="detail-image" src="/JulesWax/Assets/Interviews.png" alt="Interviews">
+    </div>
+</div>
         </main>
     </div>
 
     <script>
 function showHome() {
     hideAllPages();
-    // Remove active class from all gallery items
     document.querySelectorAll('.gallery-item').forEach(item => {
         item.classList.remove('active');
     });
     document.getElementById('home').classList.add('active');
+    window.scrollTo(0, 0);
 }
 
 function showCategory(categoryId) {
     hideAllPages();
-    // Remove active class from all gallery items
     document.querySelectorAll('.gallery-item').forEach(item => {
         item.classList.remove('active');
     });
-    // Map category names to section IDs on the home page
     const sectionMap = {
         'short-films': 'short-films-section',
         'corporate': 'corporate-section',
@@ -1312,8 +1319,8 @@ function showCategory(categoryId) {
         'graphic': 'graphic-section'
     };
     
-    // Show home page and scroll to section
     document.getElementById('home').classList.add('active');
+    window.scrollTo(0, 0);
     setTimeout(() => {
         const sectionId = sectionMap[categoryId];
         const section = document.getElementById(sectionId);
@@ -1322,7 +1329,6 @@ function showCategory(categoryId) {
         }
     }, 100);
 }
-
 function showDetail(detailId) {
     hideAllPages();
     document.getElementById('detail-' + detailId).classList.add('active');
@@ -1332,6 +1338,7 @@ function showDetail(detailId) {
 function showPage(pageId) {
     hideAllPages();
     document.getElementById(pageId).classList.add('active');
+    window.scrollTo(0, 0);
 }
 
 function hideAllPages() {
