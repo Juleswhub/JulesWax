@@ -1342,8 +1342,8 @@ function showDetail(detailId) {
     hideAllPages();
     document.getElementById('detail-' + detailId).classList.add('active');
     setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 50);
+        window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+    }, 0);
 }
 
 function showPage(pageId) {
