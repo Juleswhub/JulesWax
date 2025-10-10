@@ -264,16 +264,24 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    /* remove forced square crop */
-    aspect-ratio: auto;
-    background: transparent; /* no white background */
+    aspect-ratio: 4/3;
+    background: #fafafa;
 }
 
 .gallery-item img {
     width: 100%;
-    height: auto;
-    object-fit: contain; /* show full image without cropping */
+    height: 100%;
+    object-fit: cover;
     display: block;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item img:not([src]) {
+    opacity: 0;
+}
+
+.gallery-item img[src] {
+    opacity: 1;
 }
 
 
